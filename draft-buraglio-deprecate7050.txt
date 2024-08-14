@@ -14,7 +14,14 @@ Deprication of DNS64 for Discovery of IPv6 Prefix Used for IPv6 Address
 
 Abstract
 
-   TODO Abstract
+   [RFC7050] describes a method for detecting the presence of DNS64 and
+   for learning the IPv6 prefix used for protocol translation on an
+   access network.  This methodology depends on the existence of a well-
+   known IPv4-only fully qualified domain name "ipv4only.arpa.".
+   Because newer methods exist that lack the requirement of a higher
+   level protocol, instead using existing operations in the form of
+   native router advertisements, discovery of the IPv6 prefix used for
+   protocol translation is deprecated to legacy status.
 
 About This Document
 
@@ -69,17 +76,31 @@ Table of Contents
 
    1.  Introduction
    2.  Conventions and Definitions
-   3.  Security Considerations
-   4.  IANA Considerations
-   5.  Normative References
+   3.  Existing issues with RFC 7050
+   4.  Security Considerations
+   5.  IANA Considerations
+   6.  References
+     6.1.  Normative References
+     6.2.  Informative References
    Acknowledgments
    Author's Address
 
 1.  Introduction
 
-   TODO Introduction
+   [RFC8781] describes a Neighbor Discovery option to be used in Router
+   Advertisements (RAs) to communicate prefixes of Network Address and
+   Protocol Translation from IPv6 clients to IPv4 servers (NAT64) to
+   hosts.
 
 2.  Conventions and Definitions
+
+   NAT64
+
+   DNS64
+
+   Router Advertisement
+
+   pref64
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
@@ -87,15 +108,21 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  Security Considerations
+3.  Existing issues with RFC 7050
+
+   IPsec limitations, lack of implementation.
+
+4.  Security Considerations
 
    TODO Security
 
-4.  IANA Considerations
+5.  IANA Considerations
 
    This document has no IANA actions.
 
-5.  Normative References
+6.  References
+
+6.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -105,6 +132,17 @@ Table of Contents
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+6.2.  Informative References
+
+   [RFC7050]  Savolainen, T., Korhonen, J., and D. Wing, "Discovery of
+              the IPv6 Prefix Used for IPv6 Address Synthesis",
+              RFC 7050, DOI 10.17487/RFC7050, November 2013,
+              <https://www.rfc-editor.org/rfc/rfc7050>.
+
+   [RFC8781]  Colitti, L. and J. Linkova, "Discovering PREF64 in Router
+              Advertisements", RFC 8781, DOI 10.17487/RFC8781, April
+              2020, <https://www.rfc-editor.org/rfc/rfc8781>.
 
 Acknowledgments
 
