@@ -1,6 +1,6 @@
 ---
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
+title: "Deprication of DNS64 for Discovery of IPv6 Prefix Used for IPv6 Address Synthesis"
+abbrev: "Deprication of DNS64 for Discovery of IPv6 Prefix Used for IPv6 Address Synthesis"
 category: info
 
 docname: draft-buraglio-deprecate7050-latest
@@ -12,21 +12,20 @@ v: 3
 # area: AREA
 # workgroup: WG Working Group
 keyword:
- - next generation
- - unicorn
- - sparkling distributed ledger
+ - IPv6
+ - DNS64
 venue:
-#  group: WG
-#  type: Working Group
-#  mail: WG@example.com
-#  arch: https://example.com/WG
+  group: 6man
+  type: Working Group
+  mail: ipv6@ietf.org
+  arch: https://datatracker.ietf.org/wg/6man/about/
   github: "buraglio/draft-buraglio-deprecate7050"
   latest: "https://buraglio.github.io/draft-buraglio-deprecate7050/draft-buraglio-deprecate7050.html"
 
 author:
  -
-    fullname: Your Name Here
-    organization: Your Organization Here
+    fullname: Nick Buraglio
+    organization: Energy Sciences Network
     email: "buraglio@forwardingplane.net"
 
 normative:
