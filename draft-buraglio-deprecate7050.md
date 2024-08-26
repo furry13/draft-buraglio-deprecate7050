@@ -15,9 +15,9 @@ keyword:
  - IPv6
  - DNS64
 venue:
-  group: 6man
+  group: dnsop
   type: Working Group
-  mail: ipv6@ietf.org
+  mail: dnsop@ietf.org
   arch: https://datatracker.ietf.org/wg/6man/about/
   github: "buraglio/draft-buraglio-deprecate7050"
   latest: "https://buraglio.github.io/draft-buraglio-deprecate7050/draft-buraglio-deprecate7050.html"
@@ -50,7 +50,7 @@ informative:
 
 # Introduction
 
-[RFC8781] describes a Neighbor Discovery option to be used in Router Advertisements (RAs) to communicate prefixes of Network Address and Protocol Translation from IPv6 clients to IPv4 servers (NAT64) to hosts. This approach has the advantage of using the same communication channel IPv6 clients use to discover other network configurations such as the network's default route. This means network administrators can secure this configuration along with other configurations IPv6 requires using a single approach such as RA Guard [RFC6105]. 
+[RFC8781] describes a Neighbor Discovery option to be used in Router Advertisements (RAs) to communicate prefixes of Network Address and Protocol Translation from IPv6 clients to IPv4 servers (NAT64) to hosts. This approach has the advantage of using the same communication channel IPv6 clients use to discover other network configurations such as the network's default route. This means network administrators can secure this configuration along with other configurations IPv6 requires using a single approach such as RA Guard [RFC6105].
 
 
 # Conventions and Definitions
@@ -67,7 +67,7 @@ pref64
 
 # Existing issues with RFC 7050
 
-In addition to creating a wider attack surface for IPv6 deployments, [RFC7050]  has additional challenges worth noting to justify declaring it legacy.
+In addition to creating a wider attack surface for IPv6 deployments, [RFC7050] has additional challenges worth noting to justify declaring it legacy.
 
 ## Definition of secure channel {secure-channel-def}
 
@@ -79,7 +79,7 @@ One of the two examples [RFC7050] defines to qualify a communication channel wit
 
 ## Secure channel example of link layer encryption
 
-The other example given by [RFC7050] that would allow a communication channel with a DNS64 server to qualify as a "secure channel" is the use of a "link layer utilizing data encryption technologies". As of the time of this writing, most common link layer implementations use data encryption already with no extra effort needed on the part of network nodes. While this appears to be a trivial way to satisfy this requirement, it also renders the requirement meaningless since any node along the path can still read the higher-layer DNS traffic containing the translation prefix. This seems to be at odds with the definition of "secure channel" as explained in {{secure-channel-def}}.
+The other example given by [RFC7050] that would allow a communication channel with a DNS64 server to qualify as a "secure channel" is the use of a "link layer utilizing data encryption technologies". As of the time of this writing, most common link layer implementations use data encryption already with no extra effort needed on the part of network nodes. While this appears to be a trivial way to satisfy this requirement, it also renders the requirement meaningless since any node along the path can still read the higher-layer DNS traffic containing the translation prefix. This seems to be at odds with the definition of "secure channel" as explained in {{Section 2.2 of RFC7050}}.
 
 # Preferred approach
 
