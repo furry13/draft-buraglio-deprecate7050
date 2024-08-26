@@ -66,7 +66,7 @@ pref64
 
 # Existing issues with RFC 7050
 
-In addition to [RFC7050] creating a wider attack surface for IPv6 deployments, it has additional challenges worth noting to justify declaring it legacy.
+In addition to creating a wider attack surface for IPv6 deployments, [RFC7050]  has additional challenges worth noting to justify declaring it legacy.
 
 ## Definition of secure channel {secure-channel-def}
 
