@@ -35,6 +35,7 @@ normative:
 
 informative:
   RFC6105:
+  RFC6145:
   RFC7050:
   RFC8781:
   RFC9463:
