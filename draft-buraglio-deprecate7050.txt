@@ -4,8 +4,9 @@
 
 Network Working Group                                        N. Buraglio
 Internet-Draft                                   Energy Sciences Network
-Intended status: Informational                            14 August 2024
-Expires: 15 February 2025
+Intended status: Informational                                 T. Jensen
+Expires: 27 February 2025                                      Microsoft
+                                                          26 August 2024
 
 
 Deprication of DNS64 for Discovery of IPv6 Prefix Used for IPv6 Address
@@ -15,13 +16,13 @@ Deprication of DNS64 for Discovery of IPv6 Prefix Used for IPv6 Address
 Abstract
 
    [RFC7050] describes a method for detecting the presence of DNS64 and
-   for learning the IPv6 prefix used for protocol translation on an
-   access network.  This methodology depends on the existence of a well-
+   for learning the IPv6 prefix used for protocol translation
+   ([RFC6145]).  This methodology depends on the existence of a well-
    known IPv4-only fully qualified domain name "ipv4only.arpa.".
    Because newer methods exist that lack the requirement of a higher
    level protocol, instead using existing operations in the form of
    native router advertisements, discovery of the IPv6 prefix used for
-   protocol translation is deprecated to legacy status.
+   protocol translation using [RFC7050] is deprecated to legacy status.
 
 About This Document
 
@@ -33,10 +34,10 @@ About This Document
    may be found at https://datatracker.ietf.org/doc/draft-buraglio-
    deprecate7050/.
 
-   Discussion of this document takes place on the 6man Working Group
-   mailing list (mailto:ipv6@ietf.org), which is archived at
+   Discussion of this document takes place on the dnsop Working Group
+   mailing list (mailto:dnsop@ietf.org), which is archived at
    https://datatracker.ietf.org/wg/6man/about/.  Subscribe at
-   https://www.ietf.org/mailman/listinfo/ipv6/.
+   https://www.ietf.org/mailman/listinfo/dnsop/.
 
    Source for this draft and an issue tracker can be found at
    https://github.com/buraglio/draft-buraglio-deprecate7050.
@@ -56,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 February 2025.
+   This Internet-Draft will expire on 27 February 2025.
 
 Copyright Notice
 
@@ -77,20 +78,29 @@ Table of Contents
    1.  Introduction
    2.  Conventions and Definitions
    3.  Existing issues with RFC 7050
-   4.  Security Considerations
-   5.  IANA Considerations
-   6.  References
-     6.1.  Normative References
-     6.2.  Informative References
+     3.1.  Definition of secure channel {secure-channel-def}
+     3.2.  Secure channel example of IPsec
+     3.3.  Secure channel example of link layer encryption
+   4.  Preferred approach
+   5.  Security Considerations
+   6.  IANA Considerations
+   7.  References
+     7.1.  Normative References
+     7.2.  Informative References
    Acknowledgments
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
    [RFC8781] describes a Neighbor Discovery option to be used in Router
    Advertisements (RAs) to communicate prefixes of Network Address and
    Protocol Translation from IPv6 clients to IPv4 servers (NAT64) to
-   hosts.
+   hosts.  This approach has the advantage of using the same
+   communication channel IPv6 clients use to discover other network
+   configurations such as the network's default route.  This means
+   network administrators can secure this configuration along with other
+   configurations IPv6 requires using a single approach such as RA Guard
+   [RFC6105].
 
 2.  Conventions and Definitions
 
@@ -110,19 +120,67 @@ Table of Contents
 
 3.  Existing issues with RFC 7050
 
-   IPsec limitations, lack of implementation.
+   In addition to creating a wider attack surface for IPv6 deployments,
+   [RFC7050] has additional challenges worth noting to justify declaring
+   it legacy.
 
-4.  Security Considerations
+3.1.  Definition of secure channel {secure-channel-def}
+
+   [RFC7050] requires a node's communication channel with a DNS64 server
+   to be a "secure channel" which it defines to mean "a communication
+   channel a node has between itself and a DNS64 server protecting DNS
+   protocol-related messages from interception and tampering."  This
+   need is redundant when another communication mechanism of
+   IPv6-related configuration, specific Router Advertisements, can
+   already be defended against tampering by RA Guard [RFC6105].
+   Requiring nodes to implement two defense mechanisms when only one is
+   necessary when [RFC8781] is used in place of [RFC7050] creates
+   unnecessary risk.
+
+3.2.  Secure channel example of IPsec
+
+   One of the two examples [RFC7050] defines to qualify a communication
+   channel with a DNS64 server is the use of an "IPsec-based virtual
+   private network (VPN) tunnel".  As of the time of this writing, this
+   is not supported as a practice by any common operating system DNS
+   client.  While they could, there have also since been multiple
+   mechanisms defined for performing DNS-specific encryption such as
+   those defined in [RFC9499] that would be more appropriately scoped to
+   the applicable DNS traffic.  These are also compatible with encrypted
+   DNS advertisement by the network using Discovery of Network-
+   designated Resolvers [RFC9463] that would ensure the clients know in
+   advance that the DNS64 server supported the encryption mechanism.
+
+3.3.  Secure channel example of link layer encryption
+
+   The other example given by [RFC7050] that would allow a communication
+   channel with a DNS64 server to qualify as a "secure channel" is the
+   use of a "link layer utilizing data encryption technologies".  As of
+   the time of this writing, most common link layer implementations use
+   data encryption already with no extra effort needed on the part of
+   network nodes.  While this appears to be a trivial way to satisfy
+   this requirement, it also renders the requirement meaningless since
+   any node along the path can still read the higher-layer DNS traffic
+   containing the translation prefix.  This seems to be at odds with the
+   definition of "secure channel" as explained in Section 2.2 of
+   [RFC7050].
+
+4.  Preferred approach
+
+   The prefix discovery mechanism defined in [RFC8781] is preferred to
+   use over [RFC7050].
+
+5.  Security Considerations
 
    TODO Security
 
-5.  IANA Considerations
+6.  IANA Considerations
 
    This document has no IANA actions.
 
-6.  References
+7.  References
 
-6.1.  Normative References
+7.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -133,7 +191,16 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
-6.2.  Informative References
+7.2.  Informative References
+
+   [RFC6105]  Levy-Abegnoli, E., Van de Velde, G., Popoviciu, C., and J.
+              Mohacsi, "IPv6 Router Advertisement Guard", RFC 6105,
+              DOI 10.17487/RFC6105, February 2011,
+              <https://www.rfc-editor.org/rfc/rfc6105>.
+
+   [RFC6145]  Li, X., Bao, C., and F. Baker, "IP/ICMP Translation
+              Algorithm", RFC 6145, DOI 10.17487/RFC6145, April 2011,
+              <https://www.rfc-editor.org/rfc/rfc6145>.
 
    [RFC7050]  Savolainen, T., Korhonen, J., and D. Wing, "Discovery of
               the IPv6 Prefix Used for IPv6 Address Synthesis",
@@ -144,12 +211,27 @@ Table of Contents
               Advertisements", RFC 8781, DOI 10.17487/RFC8781, April
               2020, <https://www.rfc-editor.org/rfc/rfc8781>.
 
+   [RFC9463]  Boucadair, M., Ed., Reddy.K, T., Ed., Wing, D., Cook, N.,
+              and T. Jensen, "DHCP and Router Advertisement Options for
+              the Discovery of Network-designated Resolvers (DNR)",
+              RFC 9463, DOI 10.17487/RFC9463, November 2023,
+              <https://www.rfc-editor.org/rfc/rfc9463>.
+
+   [RFC9499]  Hoffman, P. and K. Fujiwara, "DNS Terminology", BCP 219,
+              RFC 9499, DOI 10.17487/RFC9499, March 2024,
+              <https://www.rfc-editor.org/rfc/rfc9499>.
+
 Acknowledgments
 
    TODO acknowledge.
 
-Author's Address
+Authors' Addresses
 
    Nick Buraglio
    Energy Sciences Network
    Email: buraglio@forwardingplane.net
+
+
+   Tommy Jensen
+   Microsoft
+   Email: tojens.ietf@gmail.com
