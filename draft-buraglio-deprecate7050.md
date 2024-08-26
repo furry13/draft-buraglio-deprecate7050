@@ -42,7 +42,7 @@ informative:
 
 --- abstract
 
-[RFC7050] describes a method for detecting the presence of DNS64 and for learning the IPv6 prefix used for protocol translation on an access network. This methodology depends on the existence of a well-known IPv4-only fully qualified domain name "ipv4only.arpa.". Because newer methods exist that lack the requirement of a higher level protocol, instead using existing operations in the form of native router advertisements, discovery of the IPv6 prefix used for protocol translation using [RFC7050] is deprecated to legacy status.
+[RFC7050] describes a method for detecting the presence of DNS64 and for learning the IPv6 prefix used for protocol translation ([RFC6145]). This methodology depends on the existence of a well-known IPv4-only fully qualified domain name "ipv4only.arpa.". Because newer methods exist that lack the requirement of a higher level protocol, instead using existing operations in the form of native router advertisements, discovery of the IPv6 prefix used for protocol translation using [RFC7050] is deprecated to legacy status.
 
 --- middle
 
