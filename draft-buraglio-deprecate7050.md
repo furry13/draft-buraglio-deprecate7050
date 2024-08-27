@@ -1,7 +1,7 @@
 ---
 title: "Deprecation of DNS64 for Discovery of IPv6 Prefix Used for IPv6 Address Synthesis"
 abbrev: "Deprecate RFC7050"
-category: info
+category: std
 
 docname: draft-buraglio-deprecate7050-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
@@ -40,6 +40,7 @@ normative:
 informative:
   RFC6105:
   RFC6145:
+  RFC6877:
   RFC7050:
   RFC8781:
   RFC8880:
@@ -74,6 +75,34 @@ pref64
 
 DNS-based method of discovering the NAT64 prefix introduces some challenges, which make this approach less preferable than most recently developed alternatives (such as PREF64 RA option, [RFC8781]).
 This section outlines the key issues, associated with [RFC7050].
+
+## Dependency on Network-Provided Recursive Resolvers
+
+Fundamentally, the presence of the NAT64 and the exact value of the prefix used for the translation are network-specific attributes.
+Therefore, to discover the PREF64 the device needs to use the DNS resolvers provided by the network.
+If the device is configured to use other recursive resolvers, its name resolution APIs and libraries are required to recognize 'ipv4only.arpa' as a special name and give it special treatment.
+This issue and remediation approach are discussed in [RFC8880].
+However it's been observed that not all [RFC7050] implementations support [RFC8880] requirements for special treatment of 'ipv4only.arpa'.
+As a result, configuring such systems to use resolvers other than the one provided by the network might break the PREF64 discovery, leading to degraded usser experience.
+
+## Network Stack Initialization Delay
+
+When using SLAAC ([RFC4862]), an IPv6 host usually needs just one Router Advertisement (RA, [RFC4861]) packet to obtains all information required to complete the host's network configuration.
+For an IPv6-only host the PREF64 information is essential, especially if the host implements the customer-side translator (CLAT) ([RFC6877]).
+The mechanism defined in [RFC7050] implies that the PREF64 information is not bundled with all other network configuration parameters provided by RAs, and can only be obtained after the host has configured the rest of its IPv6 stack.
+Therefore until the process described in Section 3 of [RFC7050] is completed, the CLAT process can not start, which negatively impacts IPv4-only applications which have alrady started.
+
+## Inflexibility
+
+Section 3 of [RFC7050] requires that the node SHALL cache the replies received during the PREF64 discovery and SHOULD repeat the discovery process ten seconds before the TTL of the Well-Known Name's synthetic AAAA resource record expires.
+As a result, once the PREF64 is discovered, it will be used until the TTL expired, or until the node disconnects from the network. 
+There is no mechanims for an operator to force the PREF64 rediscovery on the node without disconnecting the node from the network.
+If the operator needs to change the PREF64 value used in the network, they need to proactively reduce the TTL value returned by the DNS64 server.
+This method has two significant drawbacks:
+
+*  many networks utilize external DNS64 servers and therefore have no control over the TTL value.
+*  the PREF64 changes need to be planned and executed at least TTL seconds in advance. If the operator needs to notify nodes that a particular prefix must not be used (e.g. during a network outage or if the nodes learnt a rogue PREF64 as a result of an attack), it might not be possible without interrupting the network connectivity for the affected nodes.
+
 
 ## Security Implications
 
