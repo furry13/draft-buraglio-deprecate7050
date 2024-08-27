@@ -42,6 +42,7 @@ informative:
   RFC6145:
   RFC7050:
   RFC8781:
+  RFC8880:
   RFC9463:
   RFC9499:
 
@@ -71,17 +72,23 @@ pref64
 
 # Existing issues with RFC 7050
 
-In addition to creating a wider attack surface for IPv6 deployments, [RFC7050] has additional challenges worth noting to justify declaring it legacy.
+DNS-based method of discovering the NAT64 prefix introduces some challenges, which make this approach less preferable than most recently developed alternatives (such as PREF64 RA option, [RFC8781]).
+This section outlines the key issues, associated with [RFC7050].
 
-## Definition of secure channel {secure-channel-def}
+## Security Implications
+
+As discussed in Section 7 of [RFC7050], the DNS-based PREF64 discovery is prone to DNS spoofing attack.
+In addition to creating a wider attack surface for IPv6 deployments, [RFC7050] has other security challenges worth noting to justify declaring it legacy.
+
+### Definition of secure channel {#secure-channel-def}
 
 [RFC7050] requires a node's communication channel with a DNS64 server to be a "secure channel" which it defines to mean "a communication channel a node has between itself and a DNS64 server protecting DNS protocol-related messages from interception and tampering." This need is redundant when another communication mechanism of IPv6-related configuration, specific Router Advertisements, can already be defended against tampering by RA Guard [RFC6105]. Requiring nodes to implement two defense mechanisms when only one is necessary when [RFC8781] is used in place of [RFC7050] creates unnecessary risk.
 
-## Secure channel example of IPsec
+### Secure channel example of IPsec
 
 One of the two examples [RFC7050] defines to qualify a communication channel with a DNS64 server is the use of an "IPsec-based virtual private network (VPN) tunnel". As of the time of this writing, this is not supported as a practice by any common operating system DNS client. While they could, there have also since been multiple mechanisms defined for performing DNS-specific encryption such as those defined in [RFC9499] that would be more appropriately scoped to the applicable DNS traffic. These are also compatible with encrypted DNS advertisement by the network using Discovery of Network-designated Resolvers [RFC9463] that would ensure the clients know in advance that the DNS64 server supported the encryption mechanism.
 
-## Secure channel example of link layer encryption
+### Secure channel example of link layer encryption
 
 The other example given by [RFC7050] that would allow a communication channel with a DNS64 server to qualify as a "secure channel" is the use of a "link layer utilizing data encryption technologies". As of the time of this writing, most common link layer implementations use data encryption already with no extra effort needed on the part of network nodes. While this appears to be a trivial way to satisfy this requirement, it also renders the requirement meaningless since any node along the path can still read the higher-layer DNS traffic containing the translation prefix. This seems to be at odds with the definition of "secure channel" as explained in {{Section 2.2 of RFC7050}}.
 
