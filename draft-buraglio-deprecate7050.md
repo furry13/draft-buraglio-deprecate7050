@@ -36,12 +36,15 @@ author:
     organization: Google
     email: "furry13@gmail.com"
 normative:
+  RFC7050:
 
 informative:
+  RFC4861:
+  RFC4862:
   RFC6105:
   RFC6145:
+  RFC6147:
   RFC6877:
-  RFC7050:
   RFC8781:
   RFC8880:
   RFC9463:
@@ -56,18 +59,23 @@ RFC7050 describes a method for detecting the presence of DNS64 and for learning 
 
 # Introduction
 
-[RFC8781] describes a Neighbor Discovery option to be used in Router Advertisements (RAs) to communicate prefixes of Network Address and Protocol Translation from IPv6 clients to IPv4 servers (NAT64) to hosts. This approach has the advantage of using the same communication channel IPv6 clients use to discover other network configurations such as the network's default route. This means network administrators can secure this configuration along with other configurations IPv6 requires using a single approach such as RA Guard [RFC6105].
+The DNS-based mechanism defined in [RFC7050] was the very first mechanism available for nodes to discover the PREF64 information.
+However since the publication of RFC7050 other methods have been developed, to address some of [RFC7050] limitations. 
+
+For example, [RFC8781] describes a Neighbor Discovery option to be used in Router Advertisements (RAs) to communicate prefixes of Network Address and Protocol Translation from IPv6 clients to IPv4 servers (NAT64) to hosts. This approach has the advantage of using the same communication channel IPv6 clients use to discover other network configurations such as the network's default route. This means network administrators can secure this configuration along with other configurations IPv6 requires using a single approach such as RA Guard [RFC6105].
+
+Taking into account some fundamental flaws of [RFC7050] mechanism, it seems desirable to deprecate it and recommend new deployments and implementations to use better methods to obtain PREF64 information.
 
 
 # Conventions and Definitions
 
-NAT64
+NAT64: a mechanism for translating IPv6 packets to IPv4 packets and vice versa.  The translation is done by translating the packet headers according to the IP/ICMP Translation Algorithm defined in [RFC6145].
 
-DNS64
+DNS64: a mechanism for synthesizing AAAA records from A records, defined in [RFC6147].
 
-Router Advertisement
+Router Advertisement: A packet used by Neighbor Discovery [RFC4861] and StateLess Address AutoConfiguration (SLAAC, [RFC4862]) to advertize the presence of the routers, togther with other IPv6 configuration information.
 
-pref64
+pref64(or NAT64 prefix): An IPv6 prefix used for IPv6 address synthesis and for network addresses and protocols translation from IPv6 clients to IPv4 servers, [RFC6146].
 
 {::boilerplate bcp14-tagged}
 
