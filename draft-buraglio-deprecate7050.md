@@ -61,7 +61,7 @@ RFC7050 describes a method for detecting the presence of DNS64 and for learning 
 # Introduction
 
 The DNS-based mechanism defined in [RFC7050] was the very first mechanism available for nodes to discover the PREF64 information.
-However since the publication of RFC7050 other methods have been developed, to address some of [RFC7050] limitations. 
+However since the publication of RFC7050 other methods have been developed, to address some of [RFC7050] limitations.
 
 For example, [RFC8781] describes a Neighbor Discovery option to be used in Router Advertisements (RAs) to communicate prefixes of Network Address and Protocol Translation from IPv6 clients to IPv4 servers (NAT64) to hosts. This approach has the advantage of using the same communication channel IPv6 clients use to discover other network configurations such as the network's default route. This means network administrators can secure this configuration along with other configurations IPv6 requires using a single approach such as RA Guard [RFC6105].
 
@@ -104,7 +104,7 @@ Therefore until the process described in Section 3 of [RFC7050] is completed, th
 ## Inflexibility
 
 Section 3 of [RFC7050] requires that the node SHALL cache the replies received during the PREF64 discovery and SHOULD repeat the discovery process ten seconds before the TTL of the Well-Known Name's synthetic AAAA resource record expires.
-As a result, once the PREF64 is discovered, it will be used until the TTL expired, or until the node disconnects from the network. 
+As a result, once the PREF64 is discovered, it will be used until the TTL expired, or until the node disconnects from the network.
 There is no mechanims for an operator to force the PREF64 rediscovery on the node without disconnecting the node from the network.
 If the operator needs to change the PREF64 value used in the network, they need to proactively reduce the TTL value returned by the DNS64 server.
 This method has two significant drawbacks:
