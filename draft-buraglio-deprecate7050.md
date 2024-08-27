@@ -1,6 +1,6 @@
 ---
-title: "Deprication of DNS64 for Discovery of IPv6 Prefix Used for IPv6 Address Synthesis"
-abbrev: "Deprication of DNS64 for Discovery of IPv6 Prefix Used for IPv6 Address Synthesis"
+title: "Deprecation of DNS64 for Discovery of IPv6 Prefix Used for IPv6 Address Synthesis"
+abbrev: "Deprecate RFC7050"
 category: info
 
 docname: draft-buraglio-deprecate7050-latest
@@ -9,8 +9,8 @@ number:
 date:
 consensus: true
 v: 3
-# area: AREA
-# workgroup: WG Working Group
+area: ops
+workgroup: dnsop
 keyword:
  - IPv6
  - DNS64
@@ -31,6 +31,10 @@ author:
     fullname: Tommy Jensen
     organization: Microsoft
     email: "tojens.ietf@gmail.com"
+ -
+    fullname: Jen Linkova
+    organization: Google
+    email: "furry13@gmail.com"
 normative:
 
 informative:
@@ -43,7 +47,7 @@ informative:
 
 --- abstract
 
-[RFC7050] describes a method for detecting the presence of DNS64 and for learning the IPv6 prefix used for protocol translation ([RFC6145]). This methodology depends on the existence of a well-known IPv4-only fully qualified domain name "ipv4only.arpa.". Because newer methods exist that lack the requirement of a higher level protocol, instead using existing operations in the form of native router advertisements, discovery of the IPv6 prefix used for protocol translation using [RFC7050] is deprecated to legacy status.
+RFC7050 describes a method for detecting the presence of DNS64 and for learning the IPv6 prefix used for protocol translation (RFC6145). This methodology depends on the existence of a well-known IPv4-only fully qualified domain name "ipv4only.arpa.". Because newer methods exist that lack the requirement of a higher level protocol, instead using existing operations in the form of native router advertisements, discovery of the IPv6 prefix used for protocol translation using RFC7050 is deprecated to legacy status.
 
 --- middle
 
