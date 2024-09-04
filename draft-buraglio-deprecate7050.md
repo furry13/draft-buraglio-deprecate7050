@@ -61,7 +61,7 @@ RFC7050 describes a method for detecting the presence of DNS64 and for learning 
 # Introduction
 
 The DNS-based mechanism defined in [RFC7050] was the very first mechanism available for nodes to discover the PREF64 information.
-However since the publication of RFC7050 other methods have been developed, to address some of [RFC7050] limitations.
+However since the publication of RFC7050, other methods have been developed to address some of [RFC7050] limitations.
 
 For example, [RFC8781] describes a Neighbor Discovery option to be used in Router Advertisements (RAs) to communicate prefixes of Network Address and Protocol Translation from IPv6 clients to IPv4 servers (NAT64) to hosts. This approach has the advantage of using the same communication channel IPv6 clients use to discover other network configurations such as the network's default route. This means network administrators can secure this configuration along with other configurations IPv6 requires using a single approach such as RA Guard [RFC6105].
 
@@ -76,7 +76,7 @@ DNS64: a mechanism for synthesizing AAAA records from A records, defined in [RFC
 
 Router Advertisement: A packet used by Neighbor Discovery [RFC4861] and StateLess Address AutoConfiguration (SLAAC, [RFC4862]) to advertize the presence of the routers, togther with other IPv6 configuration information.
 
-pref64(or NAT64 prefix): An IPv6 prefix used for IPv6 address synthesis and for network addresses and protocols translation from IPv6 clients to IPv4 servers, [RFC6146].
+PREF64 (or NAT64 prefix): An IPv6 prefix used for IPv6 address synthesis and for network addresses and protocols translation from IPv6 clients to IPv4 servers, [RFC6146].
 
 {::boilerplate bcp14-tagged}
 
@@ -89,23 +89,23 @@ This section outlines the key issues, associated with [RFC7050].
 
 Fundamentally, the presence of the NAT64 and the exact value of the prefix used for the translation are network-specific attributes.
 Therefore, to discover the PREF64 the device needs to use the DNS resolvers provided by the network.
-If the device is configured to use other recursive resolvers, its name resolution APIs and libraries are required to recognize 'ipv4only.arpa' as a special name and give it special treatment.
+If the device is configured to use other recursive resolvers, its name resolution APIs and libraries are required to recognize 'ipv4only.arpa.' as a special name and give it special treatment.
 This issue and remediation approach are discussed in [RFC8880].
-However it's been observed that not all [RFC7050] implementations support [RFC8880] requirements for special treatment of 'ipv4only.arpa'.
-As a result, configuring such systems to use resolvers other than the one provided by the network might break the PREF64 discovery, leading to degraded usser experience.
+However, it has been observed that not all [RFC7050] implementations support [RFC8880] requirements for special treatment of 'ipv4only.arpa.'.
+As a result, configuring such systems to use resolvers other than the one provided by the network might break the PREF64 discovery, leading to degraded user experience.
 
 ## Network Stack Initialization Delay
 
-When using SLAAC ([RFC4862]), an IPv6 host usually needs just one Router Advertisement (RA, [RFC4861]) packet to obtains all information required to complete the host's network configuration.
-For an IPv6-only host the PREF64 information is essential, especially if the host implements the customer-side translator (CLAT) ([RFC6877]).
+When using SLAAC ([RFC4862]), an IPv6 host usually needs just one Router Advertisement (RA, [RFC4861]) packet to obtain all information required to complete the host's network configuration.
+For an IPv6-only host, the PREF64 information is essential, especially if the host implements the customer-side translator (CLAT) ([RFC6877]).
 The mechanism defined in [RFC7050] implies that the PREF64 information is not bundled with all other network configuration parameters provided by RAs, and can only be obtained after the host has configured the rest of its IPv6 stack.
-Therefore until the process described in Section 3 of [RFC7050] is completed, the CLAT process can not start, which negatively impacts IPv4-only applications which have alrady started.
+Therefore, until the process described in Section 3 of [RFC7050] is completed, the CLAT process can not start, which negatively impacts IPv4-only applications which have alrady started.
 
 ## Inflexibility
 
 Section 3 of [RFC7050] requires that the node SHALL cache the replies received during the PREF64 discovery and SHOULD repeat the discovery process ten seconds before the TTL of the Well-Known Name's synthetic AAAA resource record expires.
 As a result, once the PREF64 is discovered, it will be used until the TTL expired, or until the node disconnects from the network.
-There is no mechanims for an operator to force the PREF64 rediscovery on the node without disconnecting the node from the network.
+There is no mechanism for an operator to force the PREF64 rediscovery on the node without disconnecting the node from the network.
 If the operator needs to change the PREF64 value used in the network, they need to proactively reduce the TTL value returned by the DNS64 server.
 This method has two significant drawbacks:
 
@@ -115,12 +115,12 @@ This method has two significant drawbacks:
 
 ## Security Implications
 
-As discussed in Section 7 of [RFC7050], the DNS-based PREF64 discovery is prone to DNS spoofing attack.
+As discussed in Section 7 of [RFC7050], the DNS-based PREF64 discovery is prone to DNS spoofing attacks.
 In addition to creating a wider attack surface for IPv6 deployments, [RFC7050] has other security challenges worth noting to justify declaring it legacy.
 
 ### Definition of secure channel {#secure-channel-def}
 
-[RFC7050] requires a node's communication channel with a DNS64 server to be a "secure channel" which it defines to mean "a communication channel a node has between itself and a DNS64 server protecting DNS protocol-related messages from interception and tampering." This need is redundant when another communication mechanism of IPv6-related configuration, specific Router Advertisements, can already be defended against tampering by RA Guard [RFC6105]. Requiring nodes to implement two defense mechanisms when only one is necessary when [RFC8781] is used in place of [RFC7050] creates unnecessary risk.
+[RFC7050] requires a node's communication channel with a DNS64 server to be a "secure channel" which it defines to mean "a communication channel a node has between itself and a DNS64 server protecting DNS protocol-related messages from interception and tampering." This need is redundant when another communication mechanism of IPv6-related configuration, specificly Router Advertisements, can already be defended against tampering by RA Guard [RFC6105]. Requiring nodes to implement two defense mechanisms when only one is necessary when [RFC8781] is used in place of [RFC7050] creates unnecessary risk.
 
 ### Secure channel example of IPsec
 
@@ -132,7 +132,7 @@ The other example given by [RFC7050] that would allow a communication channel wi
 
 # Preferred approach
 
-The prefix discovery mechanism defined in [RFC8781] is preferred to use over [RFC7050].
+The use of the prefix discovery mechanism defined in [RFC8781] is preferred over the mechanism defined in [RFC7050].
 
 # Security Considerations
 
