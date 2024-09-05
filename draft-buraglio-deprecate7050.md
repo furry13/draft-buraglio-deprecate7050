@@ -130,27 +130,18 @@ One of the two examples [RFC7050] defines to qualify a communication channel wit
 
 The other example given by [RFC7050] that would allow a communication channel with a DNS64 server to qualify as a "secure channel" is the use of a "link layer utilizing data encryption technologies". As of the time of this writing, most common link layer implementations use data encryption already with no extra effort needed on the part of network nodes. While this appears to be a trivial way to satisfy this requirement, it also renders the requirement meaningless since any node along the path can still read the higher-layer DNS traffic containing the translation prefix. This seems to be at odds with the definition of "secure channel" as explained in {{Section 2.2 of RFC7050}}.
 
-# Recommendations for PREF64 Discovery
+# Preferred approach
 
-## Deployment Recommendations
-
-Operators deploying NAT64 networks SHOULD provide PREF64 information in Router Advertisements as per [RFC8781].
-
-## Clients Implementation Recommendations
-
-Clients SHOULD obtain PREF64 information from Router Advertisements as per [RFC8781] instead of using [RFC7050] method.
-In the absense of the PREF64 information in RAs, a client MAY choose to fall back to RFC7050.
-
+The prefix discovery mechanism defined in [RFC8781] is preferred to use over [RFC7050].
 
 # Security Considerations
 
-Obtaining PREF64 information from Router Advertisements improves the overall security of an IPv6-only client as it mitigates all attack vectors related to spoofed or rogue DNS response, as discussed in Section 7 of [RFC7050].
-Security considerations related to obtaining PREF64 information from RAs are discussed in Section 7 of [RFC8781].
+TODO Security
+
 
 # IANA Considerations
 
-It is expected that there will be a long tail of both clients and networks  still relying on [RFC7050] as a sole mechanism to discover PREF64 information.
-Therefore IANA still need to maintain "ipv4only.arpa." as described in [RFC7050] and this document has no IANA actions.
+This document has no IANA actions.
 
 
 --- back
