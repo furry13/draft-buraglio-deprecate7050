@@ -18,7 +18,7 @@ venue:
   group: dnsop
   type: Working Group
   mail: dnsop@ietf.org
-  arch: https://datatracker.ietf.org/wg/6man/about/
+  arch: https://datatracker.ietf.org/wg/dnsop/about/
   github: "buraglio/draft-buraglio-deprecate7050"
   latest: "https://buraglio.github.io/draft-buraglio-deprecate7050/draft-buraglio-deprecate7050.html"
 
