@@ -1,9 +1,9 @@
 ---
-title: "Deprecation of DNS64 for Discovery of IPv6 Prefix Used for IPv6 Address Synthesis"
-abbrev: "Deprecate RFC7050"
+title: "Preference of pref64 over DNS64 for Discovery of IPv6 Prefix Used for IPv6 Address Synthesis"
+abbrev: "Prefer RFC8781"
 category: std
 
-docname: draft-buraglio-deprecate7050-latest
+docname: draft-nbtjjl-dnsop-prefer8781-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
@@ -19,8 +19,8 @@ venue:
   type: Working Group
   mail: dnsop@ietf.org
   arch: https://datatracker.ietf.org/wg/dnsop/about/
-  github: "buraglio/draft-buraglio-deprecate7050"
-  latest: "https://buraglio.github.io/draft-buraglio-deprecate7050/draft-buraglio-deprecate7050.html"
+  github: "buraglio/draft-nbtjjl-dnsop-prefer8781"
+  latest: "https://github.com/buraglio/draft-nbtjjl-dnsop-prefer8781"
 
 author:
  -
@@ -53,7 +53,7 @@ informative:
 
 --- abstract
 
-RFC7050 describes a method for detecting the presence of DNS64 and for learning the IPv6 prefix used for protocol translation (RFC6145). This methodology depends on the existence of a well-known IPv4-only fully qualified domain name "ipv4only.arpa.". Because newer methods exist that lack the requirement of a higher level protocol, instead using existing operations in the form of native router advertisements, discovery of the IPv6 prefix used for protocol translation using RFC7050 is deprecated to legacy status.
+RFC7050 describes a method for detecting the presence of DNS64 and for learning the IPv6 prefix used for protocol translation (RFC6145). This methodology depends on the existence of a well-known IPv4-only fully qualified domain name "ipv4only.arpa.". Because newer methods exist that lack the requirement of a higher level protocol, instead using existing operations in the form of native router advertisements, discovery of the IPv6 prefix used for protocol translation using RFC7050 should be demoted to legacy status and used only in the absence or inability to offer RFC 8781 compliant pref64 within a router advertisement.
 
 --- middle
 
@@ -65,7 +65,7 @@ However since the publication of RFC7050, other methods have been developed to a
 
 For example, [RFC8781] describes a Neighbor Discovery option to be used in Router Advertisements (RAs) to communicate prefixes of Network Address and Protocol Translation from IPv6 clients to IPv4 servers (NAT64) to hosts. This approach has the advantage of using the same communication channel IPv6 clients use to discover other network configurations such as the network's default route. This means network administrators can secure this configuration along with other configurations IPv6 requires using a single approach such as RA Guard [RFC6105].
 
-Taking into account some fundamental flaws of [RFC7050] mechanism, it seems desirable to deprecate it and recommend new deployments and implementations to use better methods to obtain PREF64 information.
+Taking into account some fundamental flaws of [RFC7050] mechanism, it seems desirable to prefer [RFC8781] for all new deployments and for implementations to use consistent methods to obtain PREF64 information. RFC 7050 should be used only in cases where there is an inability to offer PREF64 information with a router advertisement, and as a fallback for legacy systems incapable of processing those RA options.
 
 
 # Conventions and Definitions
@@ -74,7 +74,7 @@ NAT64: a mechanism for translating IPv6 packets to IPv4 packets and vice versa. 
 
 DNS64: a mechanism for synthesizing AAAA records from A records, defined in [RFC6147].
 
-Router Advertisement: A packet used by Neighbor Discovery [RFC4861] and StateLess Address AutoConfiguration (SLAAC, [RFC4862]) to advertize the presence of the routers, togther with other IPv6 configuration information.
+Router Advertisement: A packet used by Neighbor Discovery [RFC4861] and StateLess Address AutoConfiguration (SLAAC, [RFC4862]) to advertize the presence of the routers, together with other IPv6 configuration information.
 
 PREF64 (or NAT64 prefix): An IPv6 prefix used for IPv6 address synthesis and for network addresses and protocols translation from IPv6 clients to IPv4 servers, [RFC6146].
 
@@ -99,7 +99,7 @@ As a result, configuring such systems to use resolvers other than the one provid
 When using SLAAC ([RFC4862]), an IPv6 host usually needs just one Router Advertisement (RA, [RFC4861]) packet to obtain all information required to complete the host's network configuration.
 For an IPv6-only host, the PREF64 information is essential, especially if the host implements the customer-side translator (CLAT) ([RFC6877]).
 The mechanism defined in [RFC7050] implies that the PREF64 information is not bundled with all other network configuration parameters provided by RAs, and can only be obtained after the host has configured the rest of its IPv6 stack.
-Therefore, until the process described in Section 3 of [RFC7050] is completed, the CLAT process can not start, which negatively impacts IPv4-only applications which have alrady started.
+Therefore, until the process described in Section 3 of [RFC7050] is completed, the CLAT process can not start, which negatively impacts IPv4-only applications which have already started.
 
 ## Inflexibility
 
@@ -109,8 +109,8 @@ There is no mechanism for an operator to force the PREF64 rediscovery on the nod
 If the operator needs to change the PREF64 value used in the network, they need to proactively reduce the TTL value returned by the DNS64 server.
 This method has two significant drawbacks:
 
-*  many networks utilize external DNS64 servers and therefore have no control over the TTL value.
-*  the PREF64 changes need to be planned and executed at least TTL seconds in advance. If the operator needs to notify nodes that a particular prefix must not be used (e.g. during a network outage or if the nodes learnt a rogue PREF64 as a result of an attack), it might not be possible without interrupting the network connectivity for the affected nodes.
+*  Many networks utilize external DNS64 servers and therefore have no control over the TTL value.
+*  The PREF64 changes need to be planned and executed at least TTL seconds in advance. If the operator needs to notify nodes that a particular prefix must not be used (e.g. during a network outage or if the nodes learnt a rogue PREF64 as a result of an attack), it might not be possible without interrupting the network connectivity for the affected nodes.
 
 
 ## Security Implications
