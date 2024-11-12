@@ -1,6 +1,6 @@
-# Deprication of DNS64 for Discovery of IPv6 Prefix Used for IPv6 Address Synthesis
+# Discouraging use of RFC7050 for Discovery of IPv6 Prefix Used for IPv6 Address Synthesis
 
-This is the working area for the individual Internet-Draft, "Deprication of DNS64 for Discovery of IPv6 Prefix Used for IPv6 Address Synthesis".
+This is the working area for the individual Internet-Draft, "Discouraging use of RFC7050 for Discovery of IPv6 Prefix Used for IPv6 Address Synthesis".
 
 * [Editor's Copy](https://buraglio.github.io/draft-buraglio-deprecate7050/#go.draft-buraglio-deprecate7050.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-buraglio-deprecate7050)
