@@ -53,7 +53,7 @@ informative:
 
 --- abstract
 
-RFC7050 describes a method for detecting the presence of DNS64 and for learning the IPv6 prefix used for protocol translation (RFC6145). This methodology depends on the existence of a well-known IPv4-only fully qualified domain name "ipv4only.arpa.". Because newer methods exist that lack the requirement of a higher level protocol, instead using existing operations in the form of native router advertisements, discovery of the IPv6 prefix used for protocol translation using RFC7050 should be demoted to legacy status and used only in the absence or inability to offer RFC 8781 compliant pref64 within a router advertisement.
+RFC7050 describes a method for detecting the presence of DNS64 and for learning the IPv6 prefix used for protocol translation (RFC6145). This methodology depends on the existence of a well-known IPv4-only fully qualified domain name "ipv4only.arpa.". Because newer methods exist that lack the requirement of a higher level protocol, instead using existing operations in the form of native router advertisements, discovery of the IPv6 prefix used for protocol translation using RFC7050 should be discouraged. RFC7050 MAY only be used if other methods (such as RFC8781]) can not be used.
 
 --- middle
 
