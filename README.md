@@ -2,7 +2,7 @@
 
 This is the working area for the individual Internet-Draft, "Discouraging use of RFC7050 for Discovery of IPv6 Prefix Used for IPv6 Address Synthesis".
 
-* [Editor's Copy](https://buraglio.github.io/draft-buraglio-deprecate7050/#go.draft-buraglio-deprecate7050.html)
+* [Editor's Copy](https://buraglio.github.io/draft-nbtjjl-dnsop-prefer8781/draft-nbtjjl-dnsop-prefer8781.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-buraglio-deprecate7050)
 * [Individual Draft](https://datatracker.ietf.org/doc/html/draft-buraglio-deprecate7050)
 * [Compare Editor's Copy to Individual Draft](https://buraglio.github.io/draft-buraglio-deprecate7050/#go.draft-buraglio-deprecate7050.diff)
