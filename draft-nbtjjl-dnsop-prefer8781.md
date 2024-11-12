@@ -1,6 +1,6 @@
 ---
-title: "Preference of pref64 over DNS64 for Discovery of IPv6 Prefix Used for IPv6 Address Synthesis"
-abbrev: "Prefer RFC8781"
+title: "Discouraging using RFC7050 for Discovery of IPv6 Prefix Used for IPv6 Address Synthesis"
+abbrev: "Discouraging RFC7050"
 category: std
 
 docname: draft-nbtjjl-dnsop-prefer8781-latest
