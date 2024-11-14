@@ -43,7 +43,7 @@ informative:
   RFC4862:
   RFC6105:
   RFC6146:
-  RFC6145:
+  RFC7915:
   RFC6147:
   RFC6877:
   RFC8781:
@@ -53,7 +53,7 @@ informative:
 
 --- abstract
 
-RFC7050 describes a method for detecting the presence of DNS64 and for learning the IPv6 prefix used for protocol translation (RFC6145). This methodology depends on the existence of a well-known IPv4-only fully qualified domain name "ipv4only.arpa.". Because newer methods exist that lack the requirement of a higher level protocol, instead using existing operations in the form of native router advertisements, discovery of the IPv6 prefix used for protocol translation using RFC7050 should be discouraged. RFC7050 MAY only be used if other methods (such as RFC8781]) can not be used.
+RFC7050 describes a method for detecting the presence of DNS64 and for learning the IPv6 prefix used for protocol translation (RFC7915). This methodology depends on the existence of a well-known IPv4-only fully qualified domain name "ipv4only.arpa.". Because newer methods exist that lack the requirement of a higher level protocol, instead using existing operations in the form of native router advertisements, discovery of the IPv6 prefix used for protocol translation using RFC7050 should be discouraged. RFC7050 MAY only be used if other methods (such as RFC8781]) can not be used.
 
 --- middle
 
@@ -70,7 +70,7 @@ Taking into account some fundamental flaws of [RFC7050] mechanism, it seems desi
 
 # Conventions and Definitions
 
-NAT64: a mechanism for translating IPv6 packets to IPv4 packets and vice versa.  The translation is done by translating the packet headers according to the IP/ICMP Translation Algorithm defined in [RFC6145].
+NAT64: a mechanism for translating IPv6 packets to IPv4 packets and vice versa.  The translation is done by translating the packet headers according to the IP/ICMP Translation Algorithm defined in [RFC7915].
 
 DNS64: a mechanism for synthesizing AAAA records from A records, defined in [RFC6147].
 
@@ -112,7 +112,6 @@ This method has two significant drawbacks:
 *  Many networks utilize external DNS64 servers and therefore have no control over the TTL value.
 *  The PREF64 changes need to be planned and executed at least TTL seconds in advance. If the operator needs to notify nodes that a particular prefix must not be used (e.g. during a network outage or if the nodes learnt a rogue PREF64 as a result of an attack), it might not be possible without interrupting the network connectivity for the affected nodes.
 
-
 ## Security Implications
 
 As discussed in Section 7 of [RFC7050], the DNS-based PREF64 discovery is prone to DNS spoofing attacks.
@@ -139,7 +138,7 @@ Operators deploying NAT64 networks SHOULD provide PREF64 information in Router A
 ## Clients Implementation Recommendations
 
 Clients SHOULD obtain PREF64 information from Router Advertisements as per [RFC8781] instead of using [RFC7050] method.
-In the absense of the PREF64 information in RAs, a client MAY choose to fall back to RFC7050.
+In the absence of the PREF64 information in RAs, a client MAY choose to fall back to RFC7050.
 
 # Security Considerations
 
@@ -157,4 +156,4 @@ Therefore IANA still need to maintain "ipv4only.arpa." as described in [RFC7050]
 # Acknowledgments
 {:numbered="false"}
 
-TODO acknowledge.
+The authors would like to than the following people for their valuable contributions: Lorenzo Colitti, Tom Costello.
