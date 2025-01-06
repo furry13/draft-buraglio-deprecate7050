@@ -1,24 +1,24 @@
 ---
-title: "Discouraging use of RFC7050 for Discovery of IPv6 Prefix Used for IPv6 Address Synthesis"
-abbrev: "Discouraging RFC7050"
+title: "Prefer use of RFC8781 for Discovery of IPv6 Prefix Used for IPv6 Address Synthesis"
+abbrev: "Prefer RFC8781"
 category: std
 
-docname: draft-nbtjjl-dnsop-prefer8781-latest
+docname: draft-v6ops-prefer8781-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
 consensus: true
 v: 3
 area: ops
-workgroup: dnsop
+workgroup: v6ops
 keyword:
  - IPv6
  - DNS64
 venue:
-  group: dnsop
+  group: v6ops
   type: Working Group
   mail: dnsop@ietf.org
-  arch: https://datatracker.ietf.org/wg/dnsop/about/
+  arch: https://datatracker.ietf.org/wg/v6ops/about/
   github: "buraglio/draft-nbtjjl-dnsop-prefer8781"
   latest: "https://github.com/buraglio/draft-nbtjjl-dnsop-prefer8781"
 
@@ -42,6 +42,7 @@ informative:
   RFC4861:
   RFC4862:
   RFC6105:
+  RFC6145:
   RFC6146:
   RFC7915:
   RFC6147:
@@ -63,9 +64,9 @@ RFC7050 describes a method for detecting the presence of DNS64 and for learning 
 The DNS-based mechanism defined in [RFC7050] was the very first mechanism available for nodes to discover the PREF64 information.
 However since the publication of RFC7050, other methods have been developed to address some of [RFC7050] limitations.
 
-For example, [RFC8781] describes a Neighbor Discovery option to be used in Router Advertisements (RAs) to communicate prefixes of Network Address and Protocol Translation from IPv6 clients to IPv4 servers (NAT64) to hosts. This approach has the advantage of using the same communication channel IPv6 clients use to discover other network configurations such as the network's default route. This means network administrators can secure this configuration along with other configurations IPv6 requires using a single approach such as RA Guard [RFC6105].
+For example, [RFC8781] describes a Neighbor Discovery option to be used in Router Advertisements (RAs) to communicate prefixes of Network Address and Protocol Translation from IPv6 clients to IPv4 servers (NAT64) to hosts. This approach has the advantage of using the same communication channel IPv6 clients use for discovery of other network configurations such as the network's default route. This means network administrators can secure this configuration along with other configurations which are required by IPv6 using a single approach such as RA Guard [RFC6105].
 
-Taking into account some fundamental flaws of [RFC7050] mechanism, it seems desirable to prefer [RFC8781] for all new deployments and for implementations to use consistent methods to obtain PREF64 information. RFC 7050 should be used only in cases where there is an inability to offer PREF64 information with a router advertisement, and as a fallback for legacy systems incapable of processing those RA options.
+Taking into account some fundamental flaws of [RFC7050] mechanism, it is desirable to prefer [RFC8781] for all new deployments and for implementations to use consistent methods to obtain PREF64 information. RFC 7050 should be used only in cases where there is an inability to offer PREF64 information with a router advertisement, and as a fallback for legacy systems incapable of processing those RA options.
 
 
 # Conventions and Definitions
@@ -74,9 +75,11 @@ NAT64: a mechanism for translating IPv6 packets to IPv4 packets and vice versa. 
 
 DNS64: a mechanism for synthesizing AAAA records from A records, defined in [RFC6147].
 
-Router Advertisement: A packet used by Neighbor Discovery [RFC4861] and StateLess Address AutoConfiguration (SLAAC, [RFC4862]) to advertize the presence of the routers, together with other IPv6 configuration information.
+Router Advertisement: A packet used by Neighbor Discovery [RFC4861] and StateLess Address AutoConfiguration (SLAAC, [RFC4862]) to advertise the presence of the routers, together with other IPv6 configuration information.
 
 PREF64 (or NAT64 prefix): An IPv6 prefix used for IPv6 address synthesis and for network addresses and protocols translation from IPv6 clients to IPv4 servers, [RFC6146].
+
+CLAT: A customer-side translator (XLAT) that complies with [RFC6145].
 
 {::boilerplate bcp14-tagged}
 
@@ -135,6 +138,10 @@ The other example given by [RFC7050] that would allow a communication channel wi
 
 Operators deploying NAT64 networks SHOULD provide PREF64 information in Router Advertisements as per [RFC8781].
 
+## Mobile network considerations
+
+Due to the more involved and controlled signaling of most mobile, non-WiFi networks, on these closed networks where the mobile network facing network stack of user equipment (UE) is controlled by the provider, use of [RFC8781] may not be practical to implement. These environments may choose to incorporate [RFC8781] at some point when practical such as when infrastructure upgrades occur, or software stack features are implemented.
+
 ## Clients Implementation Recommendations
 
 Clients SHOULD obtain PREF64 information from Router Advertisements as per [RFC8781] instead of using [RFC7050] method.
@@ -147,7 +154,7 @@ Security considerations related to obtaining PREF64 information from RAs are dis
 
 # IANA Considerations
 
-It is expected that there will be a long tail of both clients and networks  still relying on [RFC7050] as a sole mechanism to discover PREF64 information.
+It is expected that there will be a long tail of both clients and networks still relying on [RFC7050] as a sole mechanism to discover PREF64 information.
 Therefore IANA still need to maintain "ipv4only.arpa." as described in [RFC7050] and this document has no IANA actions.
 
 
@@ -156,4 +163,4 @@ Therefore IANA still need to maintain "ipv4only.arpa." as described in [RFC7050]
 # Acknowledgments
 {:numbered="false"}
 
-The authors would like to than the following people for their valuable contributions: Lorenzo Colitti, Tom Costello.
+The authors would like to than the following people for their valuable contributions: Lorenzo Colitti, Tom Costello, Charles Eckel, Nick Heatley, and Peter Schmitt.
