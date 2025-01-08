@@ -140,7 +140,7 @@ Operators deploying NAT64 networks SHOULD provide PREF64 information in Router A
 
 ## Mobile network considerations
 
-Due to the more involved and controlled signaling of most mobile, non-WiFi networks, on these closed networks where the mobile network facing network stack of user equipment (UE) is controlled by the provider, use of [RFC8781] may not be practical to implement. These environments may choose to incorporate [RFC8781] at some point when practical such as when infrastructure upgrades occur, or software stack features are implemented.
+Use of [RFC8781] may not be currently practical for networks that have more complex network control signaling or rely on slower network component upgrade cycles, such as mobile networks. These environments are encouraged to incorporate [RFC8781] when made practical by infrastructure upgrades or software stack feature additions.
 
 ## Clients Implementation Recommendations
 
