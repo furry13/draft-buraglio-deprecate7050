@@ -20,7 +20,7 @@ venue:
   mail: dnsop@ietf.org
   arch: https://datatracker.ietf.org/wg/v6ops/about/
   github: "buraglio/draft-nbtjjl-dnsop-prefer8781"
-  latest: "https://github.com/buraglio/draft-nbtjjl-dnsop-prefer8781"
+  latest: "https://github.com/buraglio/draft-nbtjjl-v6ops-prefer8781"
 
 author:
  -
