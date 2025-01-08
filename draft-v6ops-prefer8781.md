@@ -66,7 +66,7 @@ However since the publication of RFC7050, other methods have been developed to a
 
 For example, [RFC8781] describes a Neighbor Discovery option to be used in Router Advertisements (RAs) to communicate prefixes of Network Address and Protocol Translation from IPv6 clients to IPv4 servers (NAT64) to hosts. This approach has the advantage of using the same communication channel IPv6 clients use for discovery of other network configurations such as the network's default route. This means network administrators can secure this configuration along with other configurations which are required by IPv6 using a single approach such as RA Guard [RFC6105].
 
-Taking into account some fundamental flaws of [RFC7050] mechanism, it is desirable to prefer [RFC8781] for all new deployments and for implementations to use consistent methods to obtain PREF64 information. RFC 7050 should be used only in cases where there is an inability to offer PREF64 information with a router advertisement, and as a fallback for legacy systems incapable of processing those RA options.
+Taking into account some fundamental flaws of the [RFC7050] mechanism, it is desirable to prefer [RFC8781] for all new deployments and for implementations to use consistent methods to obtain PREF64 information. RFC 7050 should be used only in cases where there is an inability to offer PREF64 information with a router advertisement, and as a fallback for legacy systems incapable of processing those RA options.
 
 
 # Conventions and Definitions
