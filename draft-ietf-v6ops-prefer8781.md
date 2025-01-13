@@ -3,7 +3,7 @@ title: "Prefer use of RFC8781 for Discovery of IPv6 Prefix Used for IPv6 Address
 abbrev: "Prefer RFC8781"
 category: std
 
-docname: draft-v6ops-prefer8781-latest
+docname: draft-ietf-v6ops-prefer8781-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
