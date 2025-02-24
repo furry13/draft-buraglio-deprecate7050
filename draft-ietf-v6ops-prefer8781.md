@@ -14,6 +14,9 @@ workgroup: v6ops
 keyword:
  - IPv6
  - DNS64
+ - PREF64
+ - DNS64
+ - CLAT
 venue:
   group: v6ops
   type: Working Group
@@ -37,6 +40,7 @@ author:
     email: "furry13@gmail.com"
 normative:
   RFC7050:
+  RFC8781:
 
 informative:
   RFC4861:
@@ -47,7 +51,6 @@ informative:
   RFC7915:
   RFC6147:
   RFC6877:
-  RFC8781:
   RFC8880:
   RFC9463:
   RFC9499:
