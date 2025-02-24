@@ -15,7 +15,7 @@ keyword:
  - IPv6
  - DNS64
  - PREF64
- - DNS64
+ - NAT64
  - CLAT
 venue:
   group: v6ops
