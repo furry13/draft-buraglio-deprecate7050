@@ -115,6 +115,10 @@ This issue and remediation approach are discussed in [RFC8880].
 However, it has been observed that very few [RFC7050] implementations support [RFC8880] requirements for special treatment of 'ipv4only.arpa.'.
 As a result, configuring such systems and applications to use resolvers other than the one provided by the network breaks the PREF64 discovery, leading to degraded user experience.
 
+VPN clients often override the host's DNS configuration, for example, by configuring enterprise DNS servers as the host's recursive resolvers and forcing all name resolution through the VPN.
+These enterprise DNS servers typically lack DNS64 functionality and therefore cannot provide information about the PREF64 used within the local network.
+Consequently, this prevents the host from discovering the necessary PREF64, negatively impacting its connectivity on IPv6-only networks
+
 ## Network Stack Initialization Delay
 
 When using SLAAC, an IPv6 host typically requires a single RA to acquire its network configuration.
