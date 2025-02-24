@@ -155,7 +155,7 @@ The other example given by [RFC7050] that would allow a communication channel wi
 
 Operators deploying NAT64 networks SHOULD provide PREF64 information in Router Advertisements as per [RFC8781].
 
-## Mobile network considerations
+### Mobile network considerations
 
 Use of [RFC8781] may not be currently practical for networks that have more complex network control signaling or rely on slower network component upgrade cycles, such as mobile networks. These environments are encouraged to incorporate [RFC8781] when made practical by infrastructure upgrades or software stack feature additions.
 
