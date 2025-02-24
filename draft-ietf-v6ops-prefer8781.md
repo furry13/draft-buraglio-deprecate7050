@@ -106,11 +106,11 @@ This section outlines the key issues, associated with [RFC7050].
 ## Dependency on Network-Provided Recursive Resolvers
 
 Fundamentally, the presence of the NAT64 and the exact value of the prefix used for the translation are network-specific attributes.
-Therefore, to discover the PREF64 the device needs to use the DNS resolvers provided by the network.
-If the device is configured to use other recursive resolvers, its name resolution APIs and libraries are required to recognize 'ipv4only.arpa.' as a special name and give it special treatment.
+Therefore, [RFC7050] requires the device to use the DNS64 resolvers provided by the network.
+If the device is configured to use other recursive resolvers or runs a local recursive resolver, the device's name resolution APIs and libraries are required to recognize 'ipv4only.arpa.' as a special name and give it special treatment.
 This issue and remediation approach are discussed in [RFC8880].
-However, it has been observed that not all [RFC7050] implementations support [RFC8880] requirements for special treatment of 'ipv4only.arpa.'.
-As a result, configuring such systems to use resolvers other than the one provided by the network might break the PREF64 discovery, leading to degraded user experience.
+However, it has been observed that very few [RFC7050] implementations support [RFC8880] requirements for special treatment of 'ipv4only.arpa.'.
+As a result, configuring such systems to use resolvers other than the one provided by the network breaks the PREF64 discovery, leading to degraded user experience.
 
 ## Network Stack Initialization Delay
 
