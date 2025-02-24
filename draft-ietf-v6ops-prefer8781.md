@@ -46,6 +46,7 @@ informative:
   RFC4861:
   RFC4862:
   RFC6105:
+  RFC6144:
   RFC6145:
   RFC6146:
   RFC7915:
@@ -90,7 +91,7 @@ CLAT: A customer-side translator (XLAT) that complies with [RFC6145].
 
 DNS64: a mechanism for synthesizing AAAA records from A records, defined in [RFC6147].
 
-NAT64: a mechanism for translating IPv6 packets to IPv4 packets and vice versa.  The translation is done by translating the packet headers according to the IP/ICMP Translation Algorithm defined in [RFC7915].
+NAT64: a mechanism for translating IPv6 packets to IPv4 packets and vice versa.  The translation is done by translating the packet headers according to the IP/ICMP Translation Algorithm defined in [RFC7915]. NAT64 translators can operate in stateless or stateful mode ([RFC6144]).
 
 PREF64 (or NAT64 prefix): An IPv6 prefix used for IPv6 address synthesis and for network addresses and protocols translation from IPv6 clients to IPv4 servers, [RFC6146].
 
@@ -180,4 +181,4 @@ Therefore IANA still need to maintain "ipv4only.arpa." as described in [RFC7050]
 # Acknowledgments
 {:numbered="false"}
 
-The authors would like to than the following people for their valuable contributions: Lorenzo Colitti, Tom Costello, Charles Eckel, Nick Heatley, and Peter Schmitt.
+The authors would like to than the following people for their valuable contributions: Lorenzo Colitti, Tom Costello, Charles Eckel, Nick Heatley, Gabor Lencse and Peter Schmitt.
