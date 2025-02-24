@@ -140,8 +140,8 @@ This method has two significant drawbacks:
 ## Multihoming Implications
 
 According to Section 3 of [RFC7050], a node MUST examine all received AAAA resource records to discover one or more PREF64s and MUST utilize all learned prefixes.
-However, this approach presents challenges in some multihomed topologies where different DNS64 servers belonging to different ISPs might return different PREF64s. 
-In such cases, it is crucial that traffic destined for synthesized addresses is routed to the correct NAT64 device and the source address selected for those flows belongs to the prefix from that ISP's address space. 
+However, this approach presents challenges in some multihomed topologies where different DNS64 servers belonging to different ISPs might return different PREF64s.
+In such cases, it is crucial that traffic destined for synthesized addresses is routed to the correct NAT64 device and the source address selected for those flows belongs to the prefix from that ISP's address space.
 In other words, the node needs to associate the discovered PREF64 with upstream information, including the IPv6 prefix and default gateway.
 Currently, there is no reliable way for a node to map a DNS64 response (and the prefix learned from it) to a specific upstream in a multihoming scenario.
 Consequently, the node might inadvertently select an incorrect source address for a given PREF64 and/or send traffic to the incorrect uplink.
