@@ -115,6 +115,10 @@ This issue and remediation approach are discussed in [RFC8880].
 However, it has been observed that very few [RFC7050] implementations support [RFC8880] requirements for special treatment of 'ipv4only.arpa.'.
 As a result, configuring such systems and applications to use resolvers other than the one provided by the network breaks the PREF64 discovery, leading to degraded user experience.
 
+VPN clients often override the host's DNS configuration, for example, by configuring enterprise DNS servers as the host's recursive resolvers and forcing all name resolution through the VPN.
+These enterprise DNS servers typically lack DNS64 functionality and therefore cannot provide information about the PREF64 used within the local network.
+Consequently, this prevents the host from discovering the necessary PREF64, negatively impacting its connectivity on IPv6-only networks
+
 ## Network Stack Initialization Delay
 
 When using SLAAC, an IPv6 host typically requires a single RA to acquire its network configuration.
@@ -122,7 +126,7 @@ For IPv6-only hosts, timely PREF64 discovery is critical, particularly for those
 Until the PREF64 is obtained, the host's IPv4-only applications and communication to IPv4-only destinations are impaired.
 The mechanism defined in [RFC7050] does not bundle PREF64 information with other network configuration parameters.
 
-## Inflexibility
+## Latency in Updates Propagation
 
 Section 3 of [RFC7050] requires that the node SHALL cache the replies received during the PREF64 discovery and SHOULD repeat the discovery process ten seconds before the TTL of the Well-Known Name's synthetic AAAA resource record expires.
 As a result, once the PREF64 is discovered, it will be used until the TTL expired, or until the node disconnects from the network.
@@ -132,6 +136,15 @@ This method has two significant drawbacks:
 
 *  Many networks utilize external DNS64 servers and therefore have no control over the TTL value.
 *  The PREF64 changes need to be planned and executed at least TTL seconds in advance. If the operator needs to notify nodes that a particular prefix must not be used (e.g. during a network outage or if the nodes learnt a rogue PREF64 as a result of an attack), it might not be possible without interrupting the network connectivity for the affected nodes.
+
+## Multihoming Implications
+
+According to Section 3 of [RFC7050], a node MUST examine all received AAAA resource records to discover one or more PREF64s and MUST utilize all learned prefixes.
+However, this approach presents challenges in some multihomed topologies where different DNS64 servers belonging to different ISPs might return different PREF64s.
+In such cases, it is crucial that traffic destined for synthesized addresses is routed to the correct NAT64 device and the source address selected for those flows belongs to the prefix from that ISP's address space.
+In other words, the node needs to associate the discovered PREF64 with upstream information, including the IPv6 prefix and default gateway.
+Currently, there is no reliable way for a node to map a DNS64 response (and the prefix learned from it) to a specific upstream in a multihoming scenario.
+Consequently, the node might inadvertently select an incorrect source address for a given PREF64 and/or send traffic to the incorrect uplink.
 
 ## Security Implications
 
