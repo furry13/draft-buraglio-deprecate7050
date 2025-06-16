@@ -60,7 +60,7 @@ informative:
 
 On networks providing IPv4-IPv6 translation (NAT64, RFC7915), hosts and other endpoints might need to know the IPv6 prefix used for translation (the NAT64 prefix).
 While RFC7050 defined a DNS64-based prefix discovery mechanism, more robust methods have since emerged.
-This document provides updated guidelines for NAT64 prefix discovery, deprecating the RFC7050 approach in favor of modern alternatives (e.g., RFC8781) except where those are unavailable.
+This document provides updated guidelines for NAT64 prefix discovery, deprecating the RFC7050 approach in favor of modern alternatives (e.g., RFC8781) whenever available.
 
 --- middle
 
@@ -71,7 +71,7 @@ When a network provides NAT64 services, it is advantageous for hosts and endpoin
 Discovering the PREF64 enables endpoints to:
 
   * implement the customer-side translator (CLAT) functions of the 464XLAT architecture [RFC6877];
-  * translate the IPv4 literal to an IPv6 literals (Section 7.1 of [RFC8305]);
+  * translate the IPv4 literal to an IPv6 literal (Section 7.1 of [RFC8305]);
   * perform local DNS64 ([RFC6147]) functions.
 
 Dynamic PREF64 discovery is often essential, particularly for unmanaged or mobile endpoints, where static configuration is impractical.
@@ -79,7 +79,7 @@ While [RFC7050] introduced the first DNS64-based mechanism for PREF64 discovery,
 
 
 For instance, [RFC8781] defines a Neighbor Discovery ([RFC4861]) option for Router Advertisements (RAs) to convey PREF64 information to hosts.
-This approach offers several advantages (Section 3 of [RFC8781]), including fate sharing  with other host network configuration parameterss.
+This approach offers several advantages (Section 3 of [RFC8781]), including fate sharing  with other host network configuration parameters.
 
 Due to fundamental shortcomings of the [RFC7050] mechanism ({{issues}}), [RFC8781] is the preferred solution for new deployments.
 Implementations should strive for consistent PREF64 acquisition methods.
