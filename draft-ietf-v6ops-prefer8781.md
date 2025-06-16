@@ -79,7 +79,7 @@ While [RFC7050] introduced the first DNS64-based mechanism for PREF64 discovery,
 
 
 For instance, [RFC8781] defines a Neighbor Discovery ([RFC4861]) option for Router Advertisements (RAs) to convey PREF64 information to hosts.
-This approach offers several advantages (Section 3 of [RFC8781]), including fate sharing  with other host network configuration parameterss.
+This approach offers several advantages (Section 3 of [RFC8781]), including fate sharing  with other host network configuration parameters.
 
 Due to fundamental shortcomings of the [RFC7050] mechanism ({{issues}}), [RFC8781] is the preferred solution for new deployments.
 Implementations should strive for consistent PREF64 acquisition methods.
