@@ -47,7 +47,6 @@ informative:
   RFC4862:
   RFC6105:
   RFC6144:
-  RFC6145:
   RFC6146:
   RFC7915:
   RFC6147:
@@ -87,7 +86,7 @@ The DNS64-based mechanism of [RFC7050] should be employed only when RA-based PRE
 
 # Conventions and Definitions
 
-CLAT: A customer-side translator (XLAT) that complies with [RFC6145].
+CLAT: A customer-side translator (XLAT), defined in [RFC6877], that complies with [RFC7915].
 
 DNS64: a mechanism for synthesizing AAAA records from A records, defined in [RFC6147].
 
