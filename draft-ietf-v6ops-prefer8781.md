@@ -54,6 +54,7 @@ informative:
   RFC8880:
   RFC9463:
   RFC9499:
+  RFC8305:
 
 --- abstract
 
