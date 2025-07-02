@@ -8,11 +8,11 @@
 <meta content="Nick Buraglio" name="author">
 <meta content="Tommy Jensen" name="author">
 <meta content="Jen Linkova" name="author">
-<meta content="
-       On networks providing IPv4-IPv6 translation (NAT64, RFC7915), hosts and other endpoints might need to know the IPv6 prefix used for translation (the NAT64 prefix).
-While RFC7050 defined a DNS64-based prefix discovery mechanism, more robust methods have since emerged.
-This document provides updated guidelines for NAT64 prefix discovery, deprecating the RFC7050 approach in favor of modern alternatives (e.g., RFC8781) whenever available. 
-    " name="description">
+<meta content='
+       On networks providing IPv4-IPv6 translation (RFC7915), hosts and other endpoints might need to know the IPv6 prefix(es) used for translation (the NAT64 prefix).
+While "Discovery of the IPv6 Prefix Used for IPv6 Address Synthesis" (RFC7050) defines a DNS64-based prefix discovery mechanism, more robust methods have been developed since then.
+This document provides guidelines for NAT64 prefix discovery, recommending more deterministic alternatives like RFC8781 over RFC7050 when available. 
+    ' name="description">
 <meta content="xml2rfc 3.29.0" name="generator">
 <meta content="IPv6" name="keyword">
 <meta content="DNS64" name="keyword">
@@ -1095,9 +1095,9 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <h1 id="title">Recommendations for Discovering IPv6 Prefix Used for IPv6 Address Synthesis</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">On networks providing IPv4-IPv6 translation (NAT64, RFC7915), hosts and other endpoints might need to know the IPv6 prefix used for translation (the NAT64 prefix).
-While RFC7050 defined a DNS64-based prefix discovery mechanism, more robust methods have since emerged.
-This document provides updated guidelines for NAT64 prefix discovery, deprecating the RFC7050 approach in favor of modern alternatives (e.g., RFC8781) whenever available.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">On networks providing IPv4-IPv6 translation (RFC7915), hosts and other endpoints might need to know the IPv6 prefix(es) used for translation (the NAT64 prefix).
+While "Discovery of the IPv6 Prefix Used for IPv6 Address Synthesis" (RFC7050) defines a DNS64-based prefix discovery mechanism, more robust methods have been developed since then.
+This document provides guidelines for NAT64 prefix discovery, recommending more deterministic alternatives like RFC8781 over RFC7050 when available.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
