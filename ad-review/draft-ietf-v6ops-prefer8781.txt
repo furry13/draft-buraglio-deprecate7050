@@ -425,8 +425,9 @@ Table of Contents
 Acknowledgments
 
    The authors would like to than the following people for their
-   valuable contributions: Lorenzo Colitti, Tom Costello, Charles Eckel,
-   Nick Heatley, Gabor Lencse and Peter Schmitt.
+   valuable contributions: Mohamed Boucadair, Lorenzo Colitti, Tom
+   Costello, Charles Eckel, Nick Heatley, Gabor Lencse and Peter
+   Schmitt.
 
 Authors' Addresses
 
