@@ -136,9 +136,6 @@ Table of Contents
 
 2.  Conventions and Definitions
 
-   CLAT: A customer-side translator (XLAT), defined in [RFC6877], that
-   complies with [RFC7915].
-
    DNS64: a mechanism for synthesizing AAAA records from A records,
    defined in [RFC6147].
 
@@ -148,9 +145,10 @@ Table of Contents
    [RFC7915].  NAT64 translators can operate in stateless or stateful
    mode ([RFC6144]).
 
-   PREF64 (or NAT64 prefix): An IPv6 prefix used for IPv6 address
-   synthesis and for network addresses and protocols translation from
-   IPv6 clients to IPv4 servers, [RFC6146].
+   PREF64 (or Pref64::/n, or NAT64 prefix): An IPv6 prefix used for IPv6
+   address synthesis and for network addresses and protocols translation
+   from IPv6 clients to IPv4 servers using the algorithm defined in
+   [RFC6052].
 
    Router Advertisement (RA): A packet used by Neighbor Discovery
    [RFC4861] and SLAAC to advertise the presence of the routers,
@@ -203,8 +201,8 @@ Table of Contents
    When using SLAAC, an IPv6 host typically requires a single RA to
    acquire its network configuration.  For IPv6-only hosts, timely
    PREF64 discovery is critical, particularly for those performing local
-   DNS64 or NAT64 functions, such as CLAT.  Until the PREF64 is
-   obtained, the host's IPv4-only applications and communication to
+   DNS64 or NAT64 functions, such as CLAT ([RFC6877]).  Until the PREF64
+   is obtained, the host's IPv4-only applications and communication to
    IPv4-only destinations are impaired.  The mechanism defined in
    [RFC7050] does not bundle PREF64 information with other network
    configuration parameters.
