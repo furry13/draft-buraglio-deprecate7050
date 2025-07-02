@@ -11,7 +11,7 @@ Expires: 3 January 2026                                        Microsoft
                                                              2 July 2025
 
 
-Prefer use of RFC8781 for Discovery of IPv6 Prefix Used for IPv6 Address
+   Recommendations for Discovering IPv6 Prefix Used for IPv6 Address
                                Synthesis
                    draft-ietf-v6ops-prefer8781-latest
 
