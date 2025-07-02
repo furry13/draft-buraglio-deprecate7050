@@ -101,30 +101,29 @@ Table of Contents
 
 1.  Introduction
 
-   NAT64 devices translating between IPv4 and IPv6 packet headers
-   ([RFC7915]) employ a NAT64 prefix to map IPv4 addresses into the IPv6
-   address space, and vice versa.  When a network provides NAT64
-   services, it is advantageous for hosts and endpoints to acquire the
-   network's NAT64 prefix (PREF64).  Discovering the PREF64 enables
-   endpoints to:
+   Devices translating between IPv4 and IPv6 packet headers [RFC7915]
+   use a NAT64 prefix to map IPv4 addresses into the IPv6 address space,
+   and vice versa.  When a network provides NAT64, it is advantageous
+   for endpoints to acquire the network's NAT64 prefixes (PREF64).
+   Discovering the PREF64 enables endpoints to:
 
-   *  implement the customer-side translator (CLAT) functions of the
+   *  Implement the customer-side translator (CLAT) function of the
       464XLAT architecture [RFC6877];
 
-   *  translate the IPv4 literal to an IPv6 literal (Section 7.1 of
+   *  Translate IPv4 literals to IPv6 literals (Section 7.1 of
       [RFC8305]);
 
-   *  perform local DNS64 ([RFC6147]) functions.
+   *  Perform local DNS64 [RFC6147] functions.
 
-   Dynamic PREF64 discovery is often essential, particularly for
-   unmanaged or mobile endpoints, where static configuration is
-   impractical.  While [RFC7050] introduced the first DNS64-based
-   mechanism for PREF64 discovery, subsequent methods have been
-   developed to address its limitations.
+   Dynamic PREF64 discovery is useful to keep the NAT64 prefix
+   configuration up-to-date, particularly for unmanaged or mobile
+   endpoints.  [RFC7050] introduces the first DNS64-based mechanism for
+   PREF64 discovery based on [RFC7051] analysis.  However, subsequent
+   methods have been developed to address [RFC7050] limitations.
 
-   For instance, [RFC8781] defines a Neighbor Discovery ([RFC4861])
-   option for Router Advertisements (RAs) to convey PREF64 information
-   to hosts.  This approach offers several advantages (Section 3 of
+   For instance, [RFC8781] defines a Neighbor Discovery [RFC4861] option
+   for Router Advertisements (RAs) to convey PREF64 information to
+   hosts.  This approach offers several advantages (Section 3 of
    [RFC8781]), including fate sharing with other host network
    configuration parameters.
 
@@ -133,7 +132,7 @@ Table of Contents
    Implementations should strive for consistent PREF64 acquisition
    methods.  The DNS64-based mechanism of [RFC7050] should be employed
    only when RA-based PREF64 delivery is unavailable, or as a fallback
-   for legacy systems incapable of processing the PREF64 RA option.
+   for legacy systems incapable of processing the PREF64 RA Option.
 
 2.  Conventions and Definitions
 
@@ -397,6 +396,11 @@ Table of Contents
               Combination of Stateful and Stateless Translation",
               RFC 6877, DOI 10.17487/RFC6877, April 2013,
               <https://www.rfc-editor.org/rfc/rfc6877>.
+
+   [RFC7051]  Korhonen, J., Ed. and T. Savolainen, Ed., "Analysis of
+              Solution Proposals for Hosts to Learn NAT64 Prefix",
+              RFC 7051, DOI 10.17487/RFC7051, November 2013,
+              <https://www.rfc-editor.org/rfc/rfc7051>.
 
    [RFC7915]  Bao, C., Li, X., Baker, F., Anderson, T., and F. Gont,
               "IP/ICMP Translation Algorithm", RFC 7915,
