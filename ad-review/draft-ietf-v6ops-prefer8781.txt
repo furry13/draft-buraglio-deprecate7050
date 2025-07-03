@@ -90,7 +90,7 @@ Table of Contents
    4.  Recommendations for PREF64 Discovery
      4.1.  Deployment Recommendations
        4.1.1.  Mobile network considerations
-     4.2.  Clients Implementation Recommendations
+     4.2.  Endpoints Implementation Recommendations
    5.  Security Considerations
    6.  IANA Considerations
    7.  References
@@ -309,40 +309,36 @@ Table of Contents
 
 4.1.  Deployment Recommendations
 
-   Operators deploying NAT64 networks SHOULD provide PREF64 information
-   in Router Advertisements as per [RFC8781].
+   Operators deploying NAT64 SHOULD provide PREF64 information in Router
+   Advertisements per [RFC8781].
 
 4.1.1.  Mobile network considerations
 
-   Use of [RFC8781] may not be currently practical for networks that
-   have more complex network control signaling or rely on slower network
-   component upgrade cycles, such as mobile networks.  These
-   environments are encouraged to incorporate [RFC8781] when made
+   At the time of writing, use of [RFC8781] may not be yet feasible for
+   networks that have more complex network control signaling or rely on
+   slower network component upgrade cycles, such as mobile networks.
+   These environments are encouraged to incorporate [RFC8781] when made
    practical by infrastructure upgrades or software stack feature
    additions.
 
-4.2.  Clients Implementation Recommendations
+4.2.  Endpoints Implementation Recommendations
 
-   Clients SHOULD obtain PREF64 information from Router Advertisements
-   as per [RFC8781] instead of using [RFC7050] method.  In the absence
-   of the PREF64 information in RAs, a client MAY choose to fall back to
-   RFC7050.
+   Endpoints SHOULD attempt to obtain PREF64 information from Router
+   Advertisements per [RFC8781] instead of using [RFC7050] method.  In
+   the absence of the PREF64 information in RAs, an endpoint MAY choose
+   to fall back to the mechanism defined in RFC7050.
 
 5.  Security Considerations
 
-   Obtaining PREF64 information from Router Advertisements improves the
-   overall security of an IPv6-only client as it mitigates all attack
-   vectors related to spoofed or rogue DNS response, as discussed in
-   Section 7 of [RFC7050].  Security considerations related to obtaining
-   PREF64 information from RAs are discussed in Section 7 of [RFC8781].
+   Obtaining PREF64 information using RAs improves the overall security
+   of an IPv6-only client as it mitigates all attack vectors related to
+   spoofed or rogue DNS response, as discussed in Section 7 of
+   [RFC7050].  Security considerations related to obtaining PREF64
+   information from RAs are discussed in Section 7 of [RFC8781].
 
 6.  IANA Considerations
 
-   It is expected that there will be a long tail of both clients and
-   networks still relying on [RFC7050] as a sole mechanism to discover
-   PREF64 information.  Therefore IANA still need to maintain
-   "ipv4only.arpa." as described in [RFC7050] and this document has no
-   IANA actions.
+   This document does not introduce any IANA considerations.
 
 7.  References
 
