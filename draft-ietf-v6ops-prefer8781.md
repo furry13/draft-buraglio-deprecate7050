@@ -179,7 +179,7 @@ Operators deploying NAT64 SHOULD provide PREF64 information in Router Advertisem
 ### Mobile Network Considerations
 
 While [RFC8781] support is widely integrated into modern operating systems on mobile endpoints, equipment deployed in mobile network envinronments often lacks abilities to include the PREF64 Option into RAs.
-Therefore, the immediate deployment and enablement of PREF64 by mobile operators  may not currently be feasible and the recommendations outlined in this document  are not presently applicable to mobile network operators. 
+Therefore, the immediate deployment and enablement of PREF64 by mobile operators  may not currently be feasible and the recommendations outlined in this document  are not presently applicable to mobile network operators.
 These environments are encouraged to incorporate [RFC8781] when made practical by infrastructure upgrades or software stack feature additions.
 
 ### Endpoints Implementation Recommendations
