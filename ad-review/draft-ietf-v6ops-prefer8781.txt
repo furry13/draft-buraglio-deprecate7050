@@ -5,10 +5,10 @@
 v6ops                                                        N. Buraglio
 Internet-Draft                                   Energy Sciences Network
 Intended status: Informational                                 T. Jensen
-Expires: 3 January 2026                                        Microsoft
+Expires: 4 January 2026                                        Microsoft
                                                               J. Linkova
                                                                   Google
-                                                             2 July 2025
+                                                             3 July 2025
 
 
    Recommendations for Discovering IPv6 Prefix Used for IPv6 Address
@@ -58,7 +58,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 January 2026.
+   This Internet-Draft will expire on 4 January 2026.
 
 Copyright Notice
 
@@ -78,7 +78,7 @@ Table of Contents
 
    1.  Introduction
    2.  Conventions and Definitions
-   3.  Existing issues with RFC 7050
+   3.  Existing Issues with RFC 7050
      3.1.  Dependency on Network-Provided Recursive Resolvers
      3.2.  Network Stack Initialization Delay
      3.3.  Latency in Updates Propagation
@@ -162,39 +162,45 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  Existing issues with RFC 7050
+3.  Existing Issues with RFC 7050
 
    DNS-based method of discovering the NAT64 prefix introduces some
-   challenges, which make this approach less preferable than most
-   recently developed alternatives (such as PREF64 RA option,
-   [RFC8781]).  This section outlines the key issues, associated with
-   [RFC7050].
+   challenges, which make this approach less preferable than latest
+   developed alternatives (such as PREF64 RA Option, [RFC8781]).  This
+   section outlines the key issues, associated with [RFC7050], with a
+   focus on those not discussed in [RFC7050] or [RFC7051].
 
 3.1.  Dependency on Network-Provided Recursive Resolvers
 
    Fundamentally, the presence of the NAT64 and the exact value of the
    prefix used for the translation are network-specific attributes.
-   Therefore, [RFC7050] requires the device to use the DNS64 resolvers
-   provided by the network.  If the device or an application is
-   configured to use other recursive resolvers or runs a local recursive
-   resolver, the corresponding name resolution APIs and libraries are
-   required to recognize 'ipv4only.arpa.' as a special name and give it
-   special treatment.  This issue and remediation approach are discussed
-   in [RFC8880].  However, it has been observed that very few [RFC7050]
-   implementations support [RFC8880] requirements for special treatment
-   of 'ipv4only.arpa.'.  As a result, configuring such systems and
-   applications to use resolvers other than the one provided by the
-   network breaks the PREF64 discovery, leading to degraded user
-   experience.
+   Therefore, [RFC7050] requires the endpoint discovering the prefix to
+   use the DNS64 resolvers provided by the network.  If the device or an
+   application is configured to use other recursive resolvers or runs a
+   local recursive resolver, the corresponding name resolution APIs and
+   libraries are required to recognize 'ipv4only.arpa.' as a special
+   name and give it special treatment.  This issue and remediation
+   approach are discussed in [RFC8880].  However, it has been observed
+   that very few [RFC7050] implementations support [RFC8880]
+   requirements for special treatment of 'ipv4only.arpa.'.  As a result,
+   configuring such systems and applications to use resolvers other than
+   the one provided by the network breaks the PREF64 discovery, leading
+   to degraded user experience.
 
-   VPN clients often override the host's DNS configuration, for example,
-   by configuring enterprise DNS servers as the host's recursive
-   resolvers and forcing all name resolution through the VPN.  These
-   enterprise DNS servers typically lack DNS64 functionality and
+   VPN clients may override the endpoint's DNS configuration, for
+   example, by configuring enterprise DNS servers as the host's
+   recursive resolvers and forcing all name resolution through the VPN.
+   These enterprise DNS servers typically lack DNS64 functionality and
    therefore cannot provide information about the PREF64 used within the
    local network.  Consequently, this prevents the host from discovering
    the necessary PREF64, negatively impacting its connectivity on
-   IPv6-only networks
+   IPv6-only networks.
+
+   If both the network-provided DNS64 and the endpoint's resolver happen
+   to utilize the WKP, the endpoint might, by pure coincidence, use a
+   PREF64 that's valid for the current network.  However, if the
+   endpoint changes its network attachment, it can't detect if the new
+   network lacks NAT64 entirely or uses a different NSP.
 
 3.2.  Network Stack Initialization Delay
 
