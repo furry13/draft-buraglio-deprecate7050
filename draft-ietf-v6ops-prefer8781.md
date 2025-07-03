@@ -46,6 +46,7 @@ informative:
   RFC4861:
   RFC4862:
   RFC6105:
+  RFC6052:
   RFC6144:
   RFC6146:
   RFC7915:
