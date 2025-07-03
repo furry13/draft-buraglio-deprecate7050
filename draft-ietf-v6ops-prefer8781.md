@@ -75,7 +75,7 @@ Discovering the PREF64 enables endpoints to:
   * Translate IPv4 literals to IPv6 literals (Section 7.1 of [RFC8305]);
   * Perform local DNS64 [RFC6147] functions.
 
-Dynamic PREF64 discovery is useful to keep the NAT64 prefix configuration up-to-date, particularly for unmanaged or mobile endpoints.
+Dynamic PREF64 discovery is useful to keep the NAT64 prefix configuration up-to-date, particularly for unmanaged endpoints or endpoints which move between networks.
 [RFC7050] introduces the first DNS64-based mechanism for PREF64 discovery based on [RFC7051] analysis.
 However, subsequent methods have been developed to address [RFC7050] limitations.
 
