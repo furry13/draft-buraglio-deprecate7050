@@ -326,7 +326,9 @@ Table of Contents
    Endpoints SHOULD attempt to obtain PREF64 information from Router
    Advertisements per [RFC8781] instead of using [RFC7050] method.  In
    the absence of the PREF64 information in RAs, an endpoint MAY choose
-   to fall back to the mechanism defined in RFC7050.
+   to fall back to the mechanism defined in RFC7050.  This
+   recommendation to prefer the [RFC8781] mechanism over one defined in
+   [RFC7050] is consistent with Section 5.1 of [RFC8781].
 
 5.  Security Considerations
 
