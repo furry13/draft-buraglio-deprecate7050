@@ -89,7 +89,7 @@ Table of Contents
        3.5.3.  Secure Channel Example of Link Layer Encryption
    4.  Recommendations for PREF64 Discovery
      4.1.  Deployment Recommendations
-       4.1.1.  Mobile network considerations
+       4.1.1.  Mobile Network Considerations
      4.2.  Endpoints Implementation Recommendations
    5.  Security Considerations
    6.  IANA Considerations
@@ -312,7 +312,7 @@ Table of Contents
    Operators deploying NAT64 SHOULD provide PREF64 information in Router
    Advertisements per [RFC8781].
 
-4.1.1.  Mobile network considerations
+4.1.1.  Mobile Network Considerations
 
    At the time of writing, use of [RFC8781] may not be yet feasible for
    networks that have more complex network control signaling or rely on
