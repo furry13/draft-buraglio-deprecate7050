@@ -84,9 +84,9 @@ Table of Contents
      3.3.  Latency in Updates Propagation
      3.4.  Multihoming Implications
      3.5.  Security Implications
-       3.5.1.  Definition of secure channel
-       3.5.2.  Secure channel example of IPsec
-       3.5.3.  Secure channel example of link layer encryption
+       3.5.1.  Definition of Secure Shannel
+       3.5.2.  Secure Channel Example of IPsec
+       3.5.3.  Secure Channel Example of Link Layer Encryption
    4.  Recommendations for PREF64 Discovery
      4.1.  Deployment Recommendations
        4.1.1.  Mobile network considerations
@@ -207,7 +207,7 @@ Table of Contents
    When using SLAAC, an IPv6 host typically requires a single RA to
    acquire its network configuration.  For IPv6-only hosts, timely
    PREF64 discovery is critical, particularly for those performing local
-   DNS64 or NAT64 functions, such as CLAT ([RFC6877]).  Until the PREF64
+   DNS64 or NAT64 functions, such as CLAT ([RFC6877]).  Until a PREF64
    is obtained, the host's IPv4-only applications and communication to
    IPv4-only destinations are impaired.  The mechanism defined in
    [RFC7050] does not bundle PREF64 information with other network
@@ -215,20 +215,21 @@ Table of Contents
 
 3.3.  Latency in Updates Propagation
 
-   Section 3 of [RFC7050] requires that the node SHALL cache the replies
-   received during the PREF64 discovery and SHOULD repeat the discovery
-   process ten seconds before the TTL of the Well-Known Name's synthetic
-   AAAA resource record expires.  As a result, once the PREF64 is
-   discovered, it will be used until the TTL expired, or until the node
-   disconnects from the network.  There is no mechanism for an operator
-   to force the PREF64 rediscovery on the node without disconnecting the
-   node from the network.  If the operator needs to change the PREF64
-   value used in the network, they need to proactively reduce the TTL
-   value returned by the DNS64 server.  This method has two significant
-   drawbacks:
+   Section 3 of [RFC7050] states: "The node SHALL cache the replies it
+   receives during the Pref64::/n discovery procedure, and it SHOULD
+   repeat the discovery process ten seconds before the TTL of the Well-
+   Known Name's synthetic AAAA resource record expires."  As a result,
+   once a PREF64 is discovered, it will be used until the TTL expired,
+   or until the node disconnects from the network.  There is no
+   mechanism for an operator to force the PREF64 rediscovery on the node
+   without disconnecting the node from the network.  If the operator
+   needs to change the PREF64 value used in the network, they need to
+   proactively reduce the TTL value returned by the DNS64 server.  This
+   method has two significant drawbacks:
 
    *  Many networks utilize external DNS64 servers and therefore have no
-      control over the TTL value.
+      control over the TTL value, if the PREF64 needs to be changed or
+      withdrawn.
 
    *  The PREF64 changes need to be planned and executed at least TTL
       seconds in advance.  If the operator needs to notify nodes that a
@@ -239,21 +240,21 @@ Table of Contents
 
 3.4.  Multihoming Implications
 
-   According to Section 3 of [RFC7050], a node MUST examine all received
-   AAAA resource records to discover one or more PREF64s and MUST
-   utilize all learned prefixes.  However, this approach presents
-   challenges in some multihomed topologies where different DNS64
-   servers belonging to different ISPs might return different PREF64s.
-   In such cases, it is crucial that traffic destined for synthesized
-   addresses is routed to the correct NAT64 device and the source
-   address selected for those flows belongs to the prefix from that
-   ISP's address space.  In other words, the node needs to associate the
-   discovered PREF64 with upstream information, including the IPv6
-   prefix and default gateway.  Currently, there is no reliable way for
-   a node to map a DNS64 response (and the prefix learned from it) to a
-   specific upstream in a multihoming scenario.  Consequently, the node
-   might inadvertently select an incorrect source address for a given
-   PREF64 and/or send traffic to the incorrect uplink.
+   Section 3 of [RFC7050] requires a node to examine all received AAAA
+   resource records to discover one or more PREF64s and to utilize all
+   learned prefixes.  However, this approach presents challenges in some
+   multihomed topologies where different DNS64 servers belonging to
+   different ISPs might return different PREF64s.  In such cases, it is
+   crucial that traffic destined for synthesized addresses is sent to
+   the correct NAT64 and the source address selected for those flows
+   belongs to the prefix from that ISP's address space.  In other words,
+   the node needs to associate each discovered PREF64 with upstream
+   information, including the IPv6 prefix and default gateway.
+   Currently, there is no reliable way for a node to map a DNS64
+   response (and the prefix learned from it) to a specific upstream in a
+   multihoming scenario.  Consequently, the node might inadvertently
+   select an incorrect source address for a given PREF64 and/or send
+   traffic to the incorrect uplink.
 
 3.5.  Security Implications
 
@@ -262,34 +263,35 @@ Table of Contents
    a wider attack surface for IPv6 deployments, [RFC7050] has other
    security challenges worth noting to justify declaring it legacy.
 
-3.5.1.  Definition of secure channel
+3.5.1.  Definition of Secure Shannel
 
    [RFC7050] requires a node's communication channel with a DNS64 server
    to be a "secure channel" which it defines to mean "a communication
    channel a node has between itself and a DNS64 server protecting DNS
    protocol-related messages from interception and tampering."  This
    need is redundant when another communication mechanism of
-   IPv6-related configuration, specifically Router Advertisements, can
-   already be defended against tampering by RA Guard [RFC6105].
+   IPv6-related configuration, specifically RAs, can already be defended
+   against tampering, for example by enabling RA-Guard [RFC6105].
    Requiring nodes to implement two defense mechanisms when only one is
    necessary when [RFC8781] is used in place of [RFC7050] creates
    unnecessary risk.
 
-3.5.2.  Secure channel example of IPsec
+3.5.2.  Secure Channel Example of IPsec
 
-   One of the two examples [RFC7050] defines to qualify a communication
-   channel with a DNS64 server is the use of an "IPsec-based virtual
-   private network (VPN) tunnel".  As of the time of this writing, this
-   is not supported as a practice by any common operating system DNS
-   client.  While they could, there have also since been multiple
-   mechanisms defined for performing DNS-specific encryption such as
-   those defined in [RFC9499] that would be more appropriately scoped to
-   the applicable DNS traffic.  These are also compatible with encrypted
-   DNS advertisement by the network using Discovery of Network-
-   designated Resolvers [RFC9463] that would ensure the clients know in
-   advance that the DNS64 server supported the encryption mechanism.
+   One of the two examples that [RFC7050] defines to qualify a
+   communication channel with a DNS64 server is the use of an "IPsec-
+   based virtual private network (VPN) tunnel".  As of the time of this
+   writing, this is not supported as a practice by any common operating
+   system DNS client.  While they could, there have also since been
+   multiple mechanisms defined for performing DNS-specific encryption
+   such as those defined in [RFC9499] that would be more appropriately
+   scoped to the applicable DNS traffic.  These are also compatible with
+   encrypted DNS advertisement by the network using Discovery of
+   Network-designated Resolvers [RFC9463] that would ensure the clients
+   know in advance that the DNS64 server supported the encryption
+   mechanism.
 
-3.5.3.  Secure channel example of link layer encryption
+3.5.3.  Secure Channel Example of Link Layer Encryption
 
    The other example given by [RFC7050] that would allow a communication
    channel with a DNS64 server to qualify as a "secure channel" is the
