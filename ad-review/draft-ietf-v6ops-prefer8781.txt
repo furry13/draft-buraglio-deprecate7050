@@ -187,14 +187,14 @@ Table of Contents
    the one provided by the network breaks the PREF64 discovery, leading
    to degraded user experience.
 
-   VPN clients may override the endpoint's DNS configuration, for
-   example, by configuring enterprise DNS servers as the host's
+   VPN applications may override the endpoint's DNS configuration, for
+   example, by configuring enterprise DNS servers as the node's
    recursive resolvers and forcing all name resolution through the VPN.
    These enterprise DNS servers typically lack DNS64 functionality and
    therefore cannot provide information about the PREF64 used within the
-   local network.  Consequently, this prevents the host from discovering
-   the necessary PREF64, negatively impacting its connectivity on
-   IPv6-only networks.
+   local network.  Consequently, this prevents the endpoint from
+   discovering the necessary PREF64, negatively impacting its
+   connectivity on IPv6-only networks.
 
    If both the network-provided DNS64 and the endpoint's resolver happen
    to utilize the WKP, the endpoint might, by pure coincidence, use a
@@ -205,11 +205,11 @@ Table of Contents
 3.2.  Network Stack Initialization Delay
 
    When using SLAAC, an IPv6 host typically requires a single RA to
-   acquire its network configuration.  For IPv6-only hosts, timely
+   acquire its network configuration.  For IPv6-only endpoints, timely
    PREF64 discovery is critical, particularly for those performing local
    DNS64 or NAT64 functions, such as CLAT ([RFC6877]).  Until a PREF64
-   is obtained, the host's IPv4-only applications and communication to
-   IPv4-only destinations are impaired.  The mechanism defined in
+   is obtained, the endpoint's IPv4-only applications and communication
+   to IPv4-only destinations are impaired.  The mechanism defined in
    [RFC7050] does not bundle PREF64 information with other network
    configuration parameters.
 
@@ -331,8 +331,8 @@ Table of Contents
 5.  Security Considerations
 
    Obtaining PREF64 information using RAs improves the overall security
-   of an IPv6-only client as it mitigates all attack vectors related to
-   spoofed or rogue DNS response, as discussed in Section 7 of
+   of an IPv6-only endpoint as it mitigates all attack vectors related
+   to spoofed or rogue DNS response, as discussed in Section 7 of
    [RFC7050].  Security considerations related to obtaining PREF64
    information from RAs are discussed in Section 7 of [RFC8781].
 
