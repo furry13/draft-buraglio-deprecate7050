@@ -62,7 +62,7 @@ informative:
 
 On networks providing IPv4-IPv6 translation (RFC7915), hosts and other endpoints might need to know the IPv6 prefix(es) used for translation (the NAT64 prefix).
 While "Discovery of the IPv6 Prefix Used for IPv6 Address Synthesis" (RFC7050) defines a DNS64-based prefix discovery mechanism, more robust methods have been developed since then.
-This document provides guidelines for NAT64 prefix discovery, recommending more deterministic alternatives like RFC8781 over RFC7050 when available.
+This document provides guidelines for NAT64 prefix discovery, recommending more deterministic alternatives like obtaining the prefix from Router Advertisement option (RFC8781) over RFC7050 when available.
 
 --- middle
 
@@ -105,7 +105,7 @@ SLAAC:  StateLess Address AutoConfiguration, [RFC4862]
 # Existing Issues with RFC 7050 {#issues}
 
 DNS-based method of discovering the NAT64 prefix introduces some challenges, which make this approach less preferable than latest developed alternatives (such as PREF64 RA Option, [RFC8781]).
-This section outlines the key issues, associated with [RFC7050], with a focus on those not discussed in [RFC7050] or [RFC7051].
+This section outlines the key issues, associated with [RFC7050], with a focus on those not discussed in [RFC7050] or in the analysis of solutions for hosts to discover NAT64 prefix ([RFC7051]).
 
 
 ## Dependency on Network-Provided Recursive Resolvers
@@ -156,7 +156,7 @@ Consequently, the node might inadvertently select an incorrect source address fo
 As discussed in Section 7 of [RFC7050], the DNS-based PREF64 discovery is prone to DNS spoofing attacks.
 In addition to creating a wider attack surface for IPv6 deployments, [RFC7050] has other security challenges worth noting to justify declaring it legacy.
 
-### Definition of Secure Shannel {#secure-channel-def}
+### Definition of Secure Channel {#secure-channel-def}
 
 [RFC7050] requires a node's communication channel with a DNS64 server to be a "secure channel" which it defines to mean "a communication channel a node has between itself and a DNS64 server protecting DNS protocol-related messages from interception and tampering."
 This need is redundant when another communication mechanism of IPv6-related configuration, specifically RAs, can already be defended against tampering, for example by enabling RA-Guard [RFC6105].
@@ -209,4 +209,4 @@ This document does not introduce any IANA considerations.
 # Acknowledgments
 {:numbered="false"}
 
-The authors would like to than the following people for their valuable contributions: Mohamed Boucadair, Lorenzo Colitti, Tom Costello, Charles Eckel, Nick Heatley, Gabor Lencse and Peter Schmitt.
+The authors would like to thank the following people for their valuable contributions: Mohamed Boucadair, Lorenzo Colitti, Tom Costello, Charles Eckel, Nick Heatley, Gabor Lencse and Peter Schmitt.
