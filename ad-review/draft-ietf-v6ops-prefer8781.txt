@@ -5,10 +5,10 @@
 v6ops                                                        N. Buraglio
 Internet-Draft                                   Energy Sciences Network
 Intended status: Informational                                 T. Jensen
-Expires: 5 January 2026                                        Microsoft
+Expires: 8 January 2026                                                 
                                                               J. Linkova
                                                                   Google
-                                                             4 July 2025
+                                                             7 July 2025
 
 
    Recommendations for Discovering IPv6 Prefix Used for IPv6 Address
@@ -59,7 +59,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 January 2026.
+   This Internet-Draft will expire on 8 January 2026.
 
 Copyright Notice
 
@@ -471,7 +471,6 @@ Authors' Addresses
 
 
    Tommy Jensen
-   Microsoft
    Email: tojens.ietf@gmail.com
 
 
