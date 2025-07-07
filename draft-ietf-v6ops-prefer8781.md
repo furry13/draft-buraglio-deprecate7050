@@ -32,7 +32,6 @@ author:
     email: "buraglio@forwardingplane.net"
  -
     fullname: Tommy Jensen
-    organization: Microsoft
     email: "tojens.ietf@gmail.com"
  -
     fullname: Jen Linkova
