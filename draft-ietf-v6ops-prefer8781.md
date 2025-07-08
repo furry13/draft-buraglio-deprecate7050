@@ -93,7 +93,7 @@ The DNS64-based mechanism of [RFC7050] should be employed only when RA-based PRE
 DNS64: a mechanism for synthesizing AAAA records from A records, defined in [RFC6147].
 
 NAT64: a mechanism for translating IPv6 packets to IPv4 packets and vice versa.  The translation is done by translating the packet headers according to the IP/ICMP Translation Algorithm defined in [RFC7915]. NAT64 translators can operate in stateful ([RFC6144]) or stateless mode.
-This document uses "NAT64" as a generalized term for a translator which uses the algorith defined in [RFC7915] and operates within a framework for IPv4/IPv6 translation described in [RFC6144].
+This document uses "NAT64" as a generalized term for a translator which uses the stateless IP/ICMP translation algorithm defined in [RFC7915] and operates within a framework for IPv4/IPv6 translation described in [RFC6144].
 
 PREF64 (or Pref64::/n, or NAT64 prefix): An IPv6 prefix used for IPv6 address synthesis and for network addresses and protocols translation from IPv6 clients to IPv4 servers using the algorithm defined in [RFC6052].
 
