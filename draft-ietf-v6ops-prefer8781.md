@@ -121,8 +121,8 @@ VPN applications may override the endpoint's DNS configuration, for example, by 
 These enterprise DNS servers typically lack DNS64 functionality and therefore cannot provide information about the PREF64 used within the local network.
 Consequently, this prevents the endpoint from discovering the necessary PREF64, negatively impacting its connectivity on IPv6-only networks.
 
-If both the network-provided DNS64 and the endpoint's resolver happen to utilize the WKP, the endpoint might, by pure coincidence, use a PREF64 that's valid for the current network.
-However, if the endpoint changes its network attachment, it can't detect if the new network lacks NAT64 entirely or uses a different NSP.
+If both the network-provided DNS64 and the endpoint's resolver happen to utilize the Well-Known Prefix (64:ff9b::/96, [RFC6052]), the endpoint would discover a PREF64 that's valid for the current network.
+However, if the endpoint changes its network attachment, it can't detect if the new network lacks NAT64 entirely or uses a network-specific NAT64 prefix (NSP, [RFC6144]).
 
 ## Network Stack Initialization Delay
 
