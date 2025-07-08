@@ -208,7 +208,7 @@ Table of Contents
 
    If both the network-provided DNS64 and the endpoint's resolver happen
    to utilize the Well-Known Prefix (64:ff9b::/96, [RFC6052]), the
-   endpoint would discover a PREF64 that's valid for the current
+   endpoint would end up using a PREF64 that's valid for the current
    network.  However, if the endpoint changes its network attachment, it
    can't detect if the new network lacks NAT64 entirely or uses a
    network-specific NAT64 prefix (NSP, [RFC6144]).
