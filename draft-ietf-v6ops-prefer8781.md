@@ -48,6 +48,7 @@ informative:
   RFC6052:
   RFC6144:
   RFC6146:
+  RFC7225:
   RFC7915:
   RFC6147:
   RFC6877:
@@ -71,9 +72,10 @@ Devices translating between IPv4 and IPv6 packet headers [RFC7915] use a NAT64 p
 When a network provides NAT64, it is advantageous for endpoints to acquire the network's NAT64 prefixes (PREF64).
 Discovering the PREF64 enables endpoints to:
 
-  * Implement the customer-side translator (CLAT) function of the 464XLAT architecture [RFC6877];
-  * Translate IPv4 literals to IPv6 literals (Section 7.1 of [RFC8305]);
+  * Implement the customer-side translator (CLAT) function of the 464XLAT architecture [RFC6877].
+  * Translate IPv4 literals to IPv6 literals (Section 7.1 of [RFC8305]).
   * Perform local DNS64 [RFC6147] functions.
+  * Support applications relying on IPv4 address referral (Section 3.2.2 of [RFC7225]).
 
 Dynamic PREF64 discovery is useful to keep the NAT64 prefix configuration up-to-date, particularly for unmanaged endpoints or endpoints which move between networks.
 [RFC7050] introduces the first DNS64-based mechanism for PREF64 discovery based on [RFC7051] analysis.
