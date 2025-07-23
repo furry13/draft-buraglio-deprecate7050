@@ -126,7 +126,7 @@ The duration of such period and feasibility of discontinuing DNS64 support, rely
 
 Migrating away from DNS64-based discovery also reduces dependency on DNS64 in general, thereby eliminating DNSSEC and DNS64 incompatibility concerns (Section 6.2 of [RFC6147]).
 
-# Existing Issues with RFC 7050 {#issues}
+# Existing Issues with RFC7050 {#issues}
 
 DNS-based method of discovering the NAT64 prefix introduces some challenges, which make this approach less preferable than latest developed alternatives (such as PREF64 RA Option, [RFC8781]).
 This section outlines the key issues, associated with [RFC7050], with a focus on those not discussed in [RFC7050] or in the analysis of solutions for hosts to discover NAT64 prefix ([RFC7051]).
