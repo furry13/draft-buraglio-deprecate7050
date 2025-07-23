@@ -89,7 +89,7 @@ Table of Contents
        3.5.2.  Secure Channel Example of IPsec
        3.5.3.  Secure Channel Example of Link Layer Encryption
    4.  Recommendations for PREF64 Discovery
-     4.1.  Endpoints Implementation Recommendations
+     4.1.  Deployment Recommendations for Endpoints
      4.2.  Deployment Recommendations for Operators
        4.2.1.  Mobile Network Considerations
        4.2.2.  Migration Considerations
@@ -319,7 +319,7 @@ Table of Contents
 
 4.  Recommendations for PREF64 Discovery
 
-4.1.  Endpoints Implementation Recommendations
+4.1.  Deployment Recommendations for Endpoints
 
    Endpoints SHOULD attempt to obtain PREF64 information from RAs per
    [RFC8781] instead of using [RFC7050] method.  In the absence of the

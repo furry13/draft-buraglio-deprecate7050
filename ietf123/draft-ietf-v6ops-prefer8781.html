@@ -1203,10 +1203,10 @@ This document provides guidelines for NAT64 prefix discovery, recommending more 
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-recommendations-for-pref64-" class="internal xref">Recommendations for PREF64 Discovery</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
-                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-endpoints-implementation-re" class="internal xref">Endpoints Implementation Recommendations</a></p>
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-deployment-recommendations-" class="internal xref">Deployment Recommendations for Endpoints</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
-                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-deployment-recommendations-" class="internal xref">Deployment Recommendations for Operators</a></p>
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-deployment-recommendations-f" class="internal xref">Deployment Recommendations for Operators</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.1">
                     <p id="section-toc.1-1.4.2.2.2.1.1"><a href="#section-4.2.1" class="auto internal xref">4.2.1</a>.  <a href="#name-mobile-network-consideratio" class="internal xref">Mobile Network Considerations</a></p>
@@ -1405,10 +1405,10 @@ Requiring nodes to implement two defense mechanisms when only one is necessary w
       <h2 id="name-recommendations-for-pref64-">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-recommendations-for-pref64-" class="section-name selfRef">Recommendations for PREF64 Discovery</a>
       </h2>
-<div id="endpoints-implementation-recommendations">
+<div id="deployment-recommendations-for-endpoints">
 <section id="section-4.1">
-        <h3 id="name-endpoints-implementation-re">
-<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-endpoints-implementation-re" class="section-name selfRef">Endpoints Implementation Recommendations</a>
+        <h3 id="name-deployment-recommendations-">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-deployment-recommendations-" class="section-name selfRef">Deployment Recommendations for Endpoints</a>
         </h3>
 <p id="section-4.1-1">Endpoints <span class="bcp14">SHOULD</span> attempt to obtain PREF64 information from RAs per <span>[<a href="#RFC8781" class="cite xref">RFC8781</a>]</span> instead of using <span>[<a href="#RFC7050" class="cite xref">RFC7050</a>]</span> method.
 In the absence of the PREF64 information in RAs, an endpoint <span class="bcp14">MAY</span> choose to fall back to the mechanism defined in RFC7050.
@@ -1417,8 +1417,8 @@ This recommendation to prefer the <span>[<a href="#RFC8781" class="cite xref">RF
 </div>
 <div id="deployment-recommendations-for-operators">
 <section id="section-4.2">
-        <h3 id="name-deployment-recommendations-">
-<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-deployment-recommendations-" class="section-name selfRef">Deployment Recommendations for Operators</a>
+        <h3 id="name-deployment-recommendations-f">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-deployment-recommendations-f" class="section-name selfRef">Deployment Recommendations for Operators</a>
         </h3>
 <p id="section-4.2-1">Operators deploying NAT64 <span class="bcp14">SHOULD</span> provide PREF64 information in Router Advertisements per <span>[<a href="#RFC8781" class="cite xref">RFC8781</a>]</span>.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 <div id="mobile-network-considerations">
