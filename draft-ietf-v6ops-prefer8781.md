@@ -173,7 +173,7 @@ The other example given by [RFC7050] that would allow a communication channel wi
 # Recommendations for PREF64 Discovery
 
 
-## Endpoints Implementation Recommendations
+## Deployment Recommendations for Endpoints
 
 Endpoints SHOULD attempt to obtain PREF64 information from RAs per [RFC8781] instead of using [RFC7050] method.
 In the absence of the PREF64 information in RAs, an endpoint MAY choose to fall back to the mechanism defined in RFC7050.
