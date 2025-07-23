@@ -103,23 +103,23 @@ SLAAC:  StateLess Address AutoConfiguration, [RFC4862]
 
 # Recommendations for PREF64 Discovery
 
-## General Deployment Recommendations
-
-Operators deploying NAT64 SHOULD provide PREF64 information in Router Advertisements per [RFC8781].
-
-## Mobile Network Considerations
-
-While [RFC8781] support is widely integrated into modern operating systems on mobile endpoints, equipment deployed in mobile network environments often lacks abilities to include the PREF64 Option into RAs.
-Therefore, the immediate deployment and enablement of PREF64 by mobile operators may not currently be feasible and the recommendations outlined in this document are not presently applicable to mobile network operators.
-These environments are encouraged to incorporate [RFC8781] when made practical by infrastructure upgrades or software stack feature additions.
-
-## Endpoints Implementation Recommendations
+## Deployment Recommendations for Endpoints
 
 Endpoints SHOULD attempt to obtain PREF64 information from RAs per [RFC8781] instead of using [RFC7050] method.
 In the absence of the PREF64 information in RAs, an endpoint MAY choose to fall back to the mechanism defined in RFC7050.
 This recommendation to prefer the [RFC8781] mechanism over one defined in [RFC7050] is consistent with Section 5.1 of [RFC8781].
 
-## Migration Considerations
+## Deployment Recommendations for Operators
+
+Operators deploying NAT64 SHOULD provide PREF64 information in Router Advertisements per [RFC8781].
+
+### Mobile Network Considerations
+
+While [RFC8781] support is widely integrated into modern operating systems on mobile endpoints, equipment deployed in mobile network environments often lacks abilities to include the PREF64 Option into RAs.
+Therefore, the immediate deployment and enablement of PREF64 by mobile operators may not currently be feasible and the recommendations outlined in this document are not presently applicable to mobile network operators.
+These environments are encouraged to incorporate [RFC8781] when made practical by infrastructure upgrades or software stack feature additions.
+
+### Migration Considerations
 
 Transitioning from the [RFC7050] heuristic to using the [RFC8781] approach might require a period where both mechanisms coexist.
 The duration of such period and feasibility of discontinuing DNS64 support, relying solely on RA-based PREF64 signaling in a given network depends on the endpoint footprint, particularly the presence and number of endpoints running outdated operating systems, which do not support [RFC8781].
