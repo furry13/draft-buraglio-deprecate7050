@@ -131,6 +131,8 @@ Migrating away from DNS64-based discovery also reduces dependency on DNS64 in ge
 DNS-based method of discovering the NAT64 prefix introduces some challenges, which make this approach less preferable than latest developed alternatives (such as PREF64 RA Option, [RFC8781]).
 This section outlines the key issues, associated with [RFC7050], with a focus on those not discussed in [RFC7050] or in the analysis of solutions for hosts to discover NAT64 prefix ([RFC7051]).
 
+Signalling PREF64 in RA option addresses all issues outlined in this section (see Section 3 of [RFC8781] for details).
+
 ## Dependency on Network-Provided Recursive Resolvers
 
 Fundamentally, the presence of the NAT64 and the exact value of the prefix used for the translation are network-specific attributes.
@@ -147,12 +149,16 @@ Consequently, this prevents the endpoint from discovering the necessary PREF64, 
 If both the network-provided DNS64 and the endpoint's resolver happen to utilize the Well-Known Prefix (64:ff9b::/96, [RFC6052]), the endpoint would end up using a PREF64 that's valid for the current network.
 However, if the endpoint changes its network attachment, it can't detect if the new network lacks NAT64 entirely or uses a network-specific NAT64 prefix (NSP, [RFC6144]).
 
+Signalling PREF64 in RA option decouples the PREF64 discovery from the host's DNS resolvers configuration.
+
 ## Network Stack Initialization Delay
 
 When using SLAAC, an IPv6 host typically requires a single RA to acquire its network configuration.
 For IPv6-only endpoints, timely PREF64 discovery is critical, particularly for those performing local DNS64 or NAT64 functions, such as CLAT ([RFC6877]).
 Until a PREF64 is obtained, the endpoint's IPv4-only applications and communication to IPv4-only destinations are impaired.
-The mechanism defined in [RFC7050] does not bundle PREF64 information with other network configuration parameters.
+The mechanism defined in [RFC7050] does not bundle PREF64 information with other network configuration parameters, and requires at least one round-trip time (to send a DNS request and receive a response) after the network stack configuration is completed.
+
+Advertising PREF64 in RA, on the other hand, elminates the period when the host obtains IPv6 addresses and default routers, but no PREF64.
 
 ## Latency in Updates Propagation
 
@@ -165,6 +171,8 @@ This method has two significant drawbacks:
 *  Many networks utilize external DNS64 servers and therefore have no control over the TTL value, if the PREF64 needs to be changed or withdrawn.
 *  The PREF64 changes need to be planned and executed at least TTL seconds in advance. If the operator needs to notify nodes that a particular prefix must not be used (e.g. during a network outage or if the nodes learnt a rogue PREF64 as a result of an attack), it might not be possible without interrupting the network connectivity for the affected nodes.
 
+Mechanism defined in [RFC8781] allows to notify hosts about PREF64 changes immidiately, by sending an RA with updated information.
+
 ## Multihoming Implications
 
 Section 3 of [RFC7050] requires a node to examine all received AAAA resource records to discover one or more PREF64s and to utilize all learned prefixes.
@@ -173,6 +181,8 @@ In such cases, it is crucial that traffic destined for synthesized addresses is 
 In other words, the node needs to associate each discovered PREF64 with upstream information, including the IPv6 prefix and default gateway.
 Currently, there is no reliable way for a node to map a DNS64 response (and the prefix learned from it) to a specific upstream in a multihoming scenario.
 Consequently, the node might inadvertently select an incorrect source address for a given PREF64 and/or send traffic to the incorrect uplink.
+
+Advertising PREF64 in RAs allows hosts to track which PREF64 was advertised by which router and use that information to select the correct nexthop.
 
 ## Security Implications
 
@@ -207,4 +217,4 @@ This document does not introduce any IANA considerations.
 # Acknowledgments
 {:numbered="false"}
 
-The authors would like to thank the following people for their valuable contributions: Mohamed Boucadair, Lorenzo Colitti, Tom Costello, Charles Eckel, Nick Heatley, Gabor Lencse, Ted Lemon, Peter Schmitt, Chongfeng Xie.
+The authors would like to thank the following people for their valuable contributions: Mohamed Boucadair, Lorenzo Colitti, Tom Costello, Charles Eckel, Nick Heatley, Gabor Lencse, Ted Lemon, David Lou, Peter Schmitt, Chongfeng Xie.
