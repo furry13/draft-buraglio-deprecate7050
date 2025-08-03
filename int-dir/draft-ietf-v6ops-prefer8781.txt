@@ -323,7 +323,8 @@ Table of Contents
 
    Advertising PREF64 in RAs allows hosts to track which PREF64 was
    advertised by which router and use that information to select the
-   correct nexthop.
+   correct nexthop.  Section 8 of [I-D.ietf-v6ops-claton] discusses this
+   scenario in more details.
 
 4.5.  Security Implications
 
@@ -409,6 +410,13 @@ Table of Contents
               2020, <https://www.rfc-editor.org/rfc/rfc8781>.
 
 7.2.  Informative References
+
+   [I-D.ietf-v6ops-claton]
+              Linkova, J. and T. Jensen, "464XLAT Customer-side
+              Translator (CLAT): Node Recommendations", Work in
+              Progress, Internet-Draft, draft-ietf-v6ops-claton-06, 25
+              July 2025, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-v6ops-claton-06>.
 
    [RFC4861]  Narten, T., Nordmark, E., Simpson, W., and H. Soliman,
               "Neighbor Discovery for IP version 6 (IPv6)", RFC 4861,

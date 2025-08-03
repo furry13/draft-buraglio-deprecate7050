@@ -1406,7 +1406,8 @@ In such cases, it is crucial that traffic destined for synthesized addresses is 
 In other words, the node needs to associate each discovered PREF64 with upstream information, including the IPv6 prefix and default gateway.
 Currently, there is no reliable way for a node to map a DNS64 response (and the prefix learned from it) to a specific upstream in a multihoming scenario.
 Consequently, the node might inadvertently select an incorrect source address for a given PREF64 and/or send traffic to the incorrect uplink.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
-<p id="section-4.4-2">Advertising PREF64 in RAs allows hosts to track which PREF64 was advertised by which router and use that information to select the correct nexthop.<a href="#section-4.4-2" class="pilcrow">¶</a></p>
+<p id="section-4.4-2">Advertising PREF64 in RAs allows hosts to track which PREF64 was advertised by which router and use that information to select the correct nexthop.
+Section 8 of <span>[<a href="#I-D.ietf-v6ops-claton" class="cite xref">I-D.ietf-v6ops-claton</a>]</span> discusses this scenario in more details.<a href="#section-4.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security-implications">
@@ -1499,6 +1500,10 @@ Security considerations related to obtaining PREF64 information from RAs are dis
 <a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
+<dt id="I-D.ietf-v6ops-claton">[I-D.ietf-v6ops-claton]</dt>
+        <dd>
+<span class="refAuthor">Linkova, J.</span> and <span class="refAuthor">T. Jensen</span>, <span class="refTitle">"464XLAT Customer-side Translator (CLAT): Node Recommendations"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-v6ops-claton-06</span>, <time datetime="2025-07-25" class="refDate">25 July 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-claton-06">https://datatracker.ietf.org/doc/html/draft-ietf-v6ops-claton-06</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC4861">[RFC4861]</dt>
         <dd>
 <span class="refAuthor">Narten, T.</span>, <span class="refAuthor">Nordmark, E.</span>, <span class="refAuthor">Simpson, W.</span>, and <span class="refAuthor">H. Soliman</span>, <span class="refTitle">"Neighbor Discovery for IP version 6 (IPv6)"</span>, <span class="seriesInfo">RFC 4861</span>, <span class="seriesInfo">DOI 10.17487/RFC4861</span>, <time datetime="2007-09" class="refDate">September 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4861">https://www.rfc-editor.org/rfc/rfc4861</a>&gt;</span>. </dd>
