@@ -57,6 +57,7 @@ informative:
   RFC9463:
   RFC9499:
   RFC8305:
+  I-D.ietf-v6ops-claton:
 
 --- abstract
 
@@ -183,6 +184,7 @@ Currently, there is no reliable way for a node to map a DNS64 response (and the 
 Consequently, the node might inadvertently select an incorrect source address for a given PREF64 and/or send traffic to the incorrect uplink.
 
 Advertising PREF64 in RAs allows hosts to track which PREF64 was advertised by which router and use that information to select the correct nexthop.
+Section 8 of [I-D.ietf-v6ops-claton] discusses this scenario in more details.
 
 ## Security Implications
 
