@@ -213,12 +213,12 @@ Table of Contents
 
 4.  Existing Issues with RFC7050
 
-   DNS-based method of discovering the NAT64 prefix introduces some
-   challenges, which make this approach less preferable than latest
-   developed alternatives (such as PREF64 RA Option, [RFC8781]).  This
-   section outlines the key issues, associated with [RFC7050], with a
-   focus on those not discussed in [RFC7050] or in the analysis of
-   solutions for hosts to discover NAT64 prefix ([RFC7051]).
+   DNS-based discovery the NAT64 prefix introduces some challenges,
+   which make this approach less preferable than latest developed
+   alternatives (such as PREF64 RA Option, [RFC8781]).  This section
+   outlines the key issues, associated with [RFC7050], with a focus on
+   those not discussed in [RFC7050] or in the analysis of solutions for
+   hosts to discover NAT64 prefix ([RFC7051]).
 
    Signalling PREF64 in RA option addresses all issues outlined in this
    section (see Section 3 of [RFC8781] for details).
@@ -334,7 +334,7 @@ Table of Contents
    As discussed in Section 7 of [RFC7050], the DNS-based PREF64
    discovery is prone to DNS spoofing attacks.  In addition to creating
    a wider attack surface for IPv6 deployments, [RFC7050] has other
-   security challenges worth noting to justify declaring it legacy.
+   security challenges, which are discussed below.
 
 4.5.1.  Definition of Secure Channel
 
@@ -498,9 +498,10 @@ Table of Contents
 Acknowledgments
 
    The authors would like to thank the following people for their
-   valuable contributions: Mohamed Boucadair, Lorenzo Colitti, Tom
-   Costello, Charles Eckel, Susan Hares, Nick Heatley, Gabor Lencse, Ted
-   Lemon, David Lou, Peter Schmitt, Eric Vyncke, Chongfeng Xie.
+   valuable contributions: Mike Bishop, Mohamed Boucadair, Lorenzo
+   Colitti, Tom Costello, Charles Eckel, Susan Hares, Nick Heatley,
+   Gabor Lencse, Ted Lemon, David Lou, Peter Schmitt, Eric Vyncke,
+   Chongfeng Xie.
 
 Authors' Addresses
 
