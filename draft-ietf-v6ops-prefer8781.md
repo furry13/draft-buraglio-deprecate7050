@@ -122,9 +122,9 @@ These environments are encouraged to incorporate [RFC8781] when made practical b
 
 ### Migration Considerations
 
-Transitioning from the [RFC7050] heuristic to using the [RFC8781] approach might require a period where both mechanisms coexist.
-The duration of such period and feasibility of discontinuing DNS64 support, relying solely on RA-based PREF64 signaling in a given network depends on the endpoint footprint, particularly the presence and number of endpoints running outdated operating systems, which do not support [RFC8781].
-Operators are advised to take those factors into account prior to the migration.
+Transitioning from the [RFC7050] heuristic to using the [RFC8781] approach might require a period of time where both mechanisms coexist.
+How long this may take depends on the endpoint footprint, particularly the presence and number of endpoints running outdated operating systems, which do not support [RFC8781].
+Operators are advised to take those factors into account prior to removing support for the [RFC7050] heuristic, noting that it is still safe to add support for the [RFC8781] approach since endpoints that support it will always prefer it over [RFC7050] if they follow RFC requirements.
 
 Migrating away from DNS64-based discovery also reduces dependency on DNS64 in general, thereby eliminating DNSSEC and DNS64 incompatibility concerns (Section 6.2 of [RFC6147]).
 
