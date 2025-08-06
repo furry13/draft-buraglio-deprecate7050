@@ -204,7 +204,8 @@ Table of Contents
    support, relying solely on RA-based PREF64 signaling in a given
    network depends on the endpoint footprint, particularly the presence
    and number of endpoints running outdated operating systems, which do
-   not support [RFC8781].
+   not support [RFC8781].  Operators are advised to take those factors
+   into account prior to the migration.
 
    Migrating away from DNS64-based discovery also reduces dependency on
    DNS64 in general, thereby eliminating DNSSEC and DNS64
@@ -498,8 +499,8 @@ Acknowledgments
 
    The authors would like to thank the following people for their
    valuable contributions: Mohamed Boucadair, Lorenzo Colitti, Tom
-   Costello, Charles Eckel, Nick Heatley, Gabor Lencse, Ted Lemon, David
-   Lou, Peter Schmitt, Eric Vyncke, Chongfeng Xie.
+   Costello, Charles Eckel, Susan Hares, Nick Heatley, Gabor Lencse, Ted
+   Lemon, David Lou, Peter Schmitt, Eric Vyncke, Chongfeng Xie.
 
 Authors' Addresses
 
