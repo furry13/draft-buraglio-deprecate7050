@@ -247,10 +247,9 @@ Table of Contents
    These enterprise DNS servers typically lack DNS64 functionality and
    therefore cannot provide information about the PREF64 used within the
    local network.  If the VPN is configured in so-called "split
-   tunneling" mode (when only some traffic is routed into the VPN
-   tunnel, and the rest bypass the VPN), endpoints could not discover
-   the necessary PREF64, which negatively impacts their connectivity on
-   IPv6-only networks.
+   tunneling" mode (when only a subset of network traffic is routed into
+   the VPN tunnel), endpoints may not discover the necessary PREF64,
+   which negatively impacts their connectivity on IPv6-only networks.
 
    If both the network-provided DNS64 and the endpoint's resolver happen
    to utilize the Well-Known Prefix (64:ff9b::/96, [RFC6052]), the
