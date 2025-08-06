@@ -61,7 +61,7 @@ informative:
 
 --- abstract
 
-On networks providing IPv4-IPv6 translation (RFC7915), hosts and other endpoints need to know the IPv6 prefix(es) used for translation (the NAT64 prefix). This document provides guidelines for NAT64 prefix discovery, specifically recommending obtaining the NAT64 prefix from Router Advertisement option (RFC8781) when available.
+On networks providing IPv4-IPv6 translation (RFC7915), hosts and other endpoints need to know the IPv6 prefix(es) used for translation (the NAT64 prefix, RFC6052). This document provides guidelines for NAT64 prefix discovery, specifically recommending obtaining the NAT64 prefix from Router Advertisement option (RFC8781) when available.
 
 --- middle
 
@@ -112,7 +112,7 @@ This recommendation to prefer the [RFC8781] mechanism over one defined in [RFC70
 
 ## Deployment Recommendations for Operators
 
-Operators deploying NAT64 SHOULD provide PREF64 information in Router Advertisements per [RFC8781].
+Network operators deploying NAT64 SHOULD provide PREF64 information in Router Advertisements per [RFC8781].
 
 ### Mobile Network Considerations
 
@@ -145,7 +145,7 @@ As a result, configuring such systems and applications to use resolvers other th
 
 VPN applications may override the endpoint's DNS configuration, for example, by configuring enterprise DNS servers as the node's recursive resolvers and forcing all name resolution through the VPN.
 These enterprise DNS servers typically lack DNS64 functionality and therefore cannot provide information about the PREF64 used within the local network.
-Consequently, this prevents the endpoint from discovering the necessary PREF64, negatively impacting its connectivity on IPv6-only networks.
+If the VPN is configured in so-called "split tunneling" mode (when only some traffic is routed into the VPN tunnel, and the rest bypass the VPN), endpoints could not discover the necessary PREF64, which negatively impacts their connectivity on IPv6-only networks.
 
 If both the network-provided DNS64 and the endpoint's resolver happen to utilize the Well-Known Prefix (64:ff9b::/96, [RFC6052]), the endpoint would end up using a PREF64 that's valid for the current network.
 However, if the endpoint changes its network attachment, it can't detect if the new network lacks NAT64 entirely or uses a network-specific NAT64 prefix (NSP, [RFC6144]).
