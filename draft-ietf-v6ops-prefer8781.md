@@ -220,4 +220,4 @@ This document does not introduce any IANA considerations.
 # Acknowledgments
 {:numbered="false"}
 
-The authors would like to thank the following people for their valuable contributions: Mike Bishop, Mohamed Boucadair, Lorenzo Colitti, Tom Costello, Charles Eckel, Susan Hares, Nick Heatley, Gabor Lencse, Ted Lemon, David Lou, Peter Schmitt, Eric Vyncke, Chongfeng Xie.
+The authors would like to thank the following people for their valuable contributions: Mike Bishop, Mohamed Boucadair, Lorenzo Colitti, Tom Costello, Charles Eckel, Susan Hares, Nick Heatley, Gabor Lencse, Ted Lemon, David Lou, Peter Schmitt, Éric Vyncke, Chongfeng Xie.
